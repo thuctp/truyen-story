@@ -288,6 +288,76 @@ if(isset($_GET['truyenxoa']))
     }
 }
 
+/***********************************************
+ *  xử ly phan them chuong
+ ***********************************************/
+//xử lý thêm chuong
+if(isset($_POST['themchuong']))
+{
+    $idtruyen=$_POST['truyen'] ;
+    $tenchuong=$_POST['txttenchuong'];
+    $noidung=$_POST['txtnoidung'];
+    $ngaydang = date('Y-m-d h:i:s', time());
 
+    $ssp=" insert into nncms_chuong (idTruyen, TenChuong, NoiDung, NgayDang) values ('$idtruyen', '$tenchuong', '$noidung', '$ngaydang') ";
+    if(mysqli_query($con, $ssp))
+    {
+        echo "<script>alert('Them thanh cong');location.href='index.php?key=dschuong';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Thêm Thất Bại! Xin kiểm tra lại');location.href='index.php?key=themchuong';</script>";
+    }
+}
+// sửa chuong
+if(isset($_POST['suasanpham']))
+{
+    $idloai=$_POST['loai'] ;
+    $tensp=$_POST['txttensp'];
+    $gia=$_POST['txtgia'];
+    $mota=$_POST['txtmota'];
+    $chitiet=$_POST['txtchitiet'];
+    $tonkho=$_POST['txttonkho'];
+    $ghichu=$_POST['txtghichu'];
+    $trangthai=$_POST['txtanhien'];
+    $hinh=$_FILES["hinh"]["name"];
+    $ngaydang = date('Y-m-d h:i:s', time());
+
+    if ($_FILES["hinh"]["name"]=="")
+    {
+        $s=" update nncms_sanpham set idLoai='$idloai', TenSP='$tensp', Gia='$gia', MoTa='$mota', ChiTiet='$chitiet', NgayDang='$ngaydang', TonKho='$tonkho', GhiChu='$ghichu', AnHien='$trangthai' where idSP={$_POST['idsp']} ";
+    }
+    else
+    {
+        $s=" update nncms_sanpham set idLoai='$idloai', TenSP='$tensp', Gia='$gia', MoTa='$mota', ChiTiet='$chitiet', UrlHinh='$hinh', NgayDang='$ngaydang', TonKho='$tonkho', GhiChu='$ghichu', AnHien='$trangthai' where idSP={$_POST['idsp']} ";
+        move_uploaded_file($_FILES["hinh"]["tmp_name"],"../upload/sanpham/".$_FILES["hinh"]["name"]);
+
+        if(mysqli_query($con, $s))
+        {
+            echo "<script>alert('Sửa Sản Phẩm Thành Công!');location.href='index.php?key=dssanpham';</script>";
+
+        }
+        else
+        {
+            echo "<script>alert('Thất Bại! Sửa Sản Phẩm Chưa Thành Công');</script>";
+        }
+    }
+}
+
+//xóa chuong
+if(isset($_GET['chuongxoa']))
+{
+    $sxoa="delete from nncms_chuong where idChuong={$_GET['chuongxoa']}";
+    $kq=mysqli_query($con, $sxoa);
+    if($kq)
+    {
+        echo "<script>alert('Xoa thanh cong');location.href='index.php?key=dschuong';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Xoa khong thanh cong');location.href='index.php?key=dschuong';</script>";
+    }
+
+}
 
 ?>

@@ -1,54 +1,96 @@
         <?php
-            if(isset($_GET['loaisua'])) //kieemr tra xem o ther a href co chuyen len chua neu cos thif thuc hien
+            if(isset($_GET['sanphamsua']))
             {
-                $idL=$_GET['loaisua']; //tao bien cl moi va cho nnos bawng gia tri get ve de lay thong tin can sua
-                $kq=mysqli_query($con, "select * from nncms_loaisp where idLoai=$idL");
-                $dl=mysqli_fetch_array($kq);
+                $idsp=$_GET['sanphamsua'];
+                $s="select * from nncms_sanpham where idSP=$idsp";
+                $kq=mysqli_query($con, $s);
+                $d=mysqli_fetch_array($kq);
         ?>
+<!--todo-->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Loại Sản Phẩm
-                            <small>Thêm Mới</small>
+                        <h1 class="page-header">Chuong
+                            <small>Sua Chuong</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
-                    <div class="col-lg-7" style="padding-bottom:120px">
-                        <form id="formthemloai" id="formthemloai" action="process.php" method="POST">
+                    <div class="col-lg-11" style="padding-bottom:120px">
+                        <form id="form1" name="form1" action="" method="POST">
                             <div class="form-group">
-                                <label><h4>Chủng Loại</h4></label>
-                                <select class="form-control" name="chungloai" id="chungloai">
-                                <?php
-                                    $kqcl=mysqli_query($con, "select idCL, TenCL from nncms_chungloai");
-                                    while ($dcl=mysqli_fetch_array($kqcl)) {
-                                ?>
-                                    <option value="<?php echo $dcl['idCL'];?>" <?php if($dl['idCL']==$dcl['idCL']) echo "selected='selected'";?> ><?php echo $dcl['TenCL'];?></option>
-                                <?php } ?>
+                                <label><h4>Chủng Loại:</h4></label>
+                                <select style="width: 300px" class="form-control" name="chungloai" id="chungloai" onchange="form1.submit()">
+                            <?php 
+                                $scl = "Select idCL, TenCL from nncms_chungloai";
+                                $kqcl = mysqli_query($con, $scl);
+                                $idCL = 0;
+                                while($dcl = mysqli_fetch_array($kqcl))
+                                {
+                                  if($idCL == 0) $idCL = $dcl['idCL'];
+                            ?>
+                                    <option <?php if(isset($_POST['chungloai']) && $_POST['chungloai'] == $dcl['idCL']) {$idCL = $_POST['chungloai']; echo "selected='selected'";}?> value="<?php echo $dcl['idCL'];?>"><?php echo $dcl['TenCL'];?>
+                            <?php } ?>
                                 </select>
-                                <input type="hidden" name="key" value="dsloaisp">
-                                <input type="hidden" name="idL" value="<?php echo $idL ;?>"/>
+                                <input type="hidden" name="key" value="themsanpham">
+                                <input type="hidden" name="idsp" value="<?php echo $idsp;?>">
+                            </div>
+                        </form>
+                        <form id="ssp" name="ssp" action="process.php" method="POST">
+                            <div class="form-group">
+                                <label><h4>Loại Sản Phẩm:</h4></label>
+                                <select style="width: 300px" class="form-control" name="loai" id="loai">
+                            <?php 
+                                $sl = "select idLoai, TenLoai from nncms_loaisp where idCL = $idCL order by ThuTu";
+                                $kql = mysqli_query($con, $sl);
+                                $idL = 0;
+                                while($dl = mysqli_fetch_array($kql))
+                                {
+                                  if($idL == 0) $idL = $dl['idLoai'];
+                            ?> 
+                                    <option <?php if(isset($_POST['loai']) && $_POST['loai'] == $dl['idLoai']) {$idL = $_POST['loai']; echo "selected='selected'";}?> value="<?php echo $dl['idLoai'];?>"><?php echo $dl['TenLoai'];?></option>
+                            <?php } ?>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label>Tên Loại Sản Phẩm</label>
-                                <input class="form-control" name="txtloai" required value="<?php echo $dl['TenLoai']; ?>" />
+                                <label>Tên Sản Phẩm</label>
+                                <input class="form-control" type="text" name="txttensp" value="<?php echo $d['TenSP']; ?>" required />
                             </div>
                             <div class="form-group">
-                                <label>Thứ Tự</label>
-                                <input class="form-control" type="number" min="1" name="txtthutu" value="<?php echo $dl['ThuTu']; ?>" />
+                                <label>Giá</label>
+                                <input class="form-control" type="number" name="txtgia" value="<?php echo $d['Gia']; ?>" required min="1000" />
+                            </div>
+                            <div class="form-group">
+                                <label>Mô Tả</label>
+                                <textarea class="form-control ckeditor" name="txtmota"><?php echo $d['MoTa']; ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Chi Tiết</label>
+                                <textarea class="form-control ckeditor" name="txtchitiet"><?php echo $d['ChiTiet']; ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="ufile">Hình Ảnh</label>
+                                <input type="file" name="hinh" id="hinh" />
+                            </div>
+                            <div class="form-group">
+                                <label>Tồn Kho</label>
+                                <input class="form-control" type="number" name="txttonkho" min="1" value="<?php echo $d['TonKho']; ?>" />
+                            </div>
+                            <div class="form-group">
+                                <label>Ghi Chú</label>
+                                <input class="form-control" type="text" name="txtghichu" value="<?php echo $d['GhiChu']; ?>"  />
                             </div>
                             <div class="form-group">
                                 <label>Ẩn Hiện</label>
                                 <label class="radio-inline">
-                                    <input name="txtanhien" <?php if( $dl['AnHien'] == 0) echo 'checked=""';?> value="0" checked="" type="radio">Ẩn
+                                    <input name="txtanhien" <?php if( $d['AnHien'] == 0) echo 'checked=""';?> value="0" checked="" type="radio">Ẩn
                                 </label>
                                 <label class="radio-inline">
-                                    <input name="txtanhien" <?php if( $dl['AnHien'] == 1) echo 'checked=""';?> value="1" type="radio">Hiện
+                                    <input name="txtanhien" <?php if( $d['AnHien'] == 1) echo 'checked=""';?> value="1" type="radio">Hiện
                                 </label>
                             </div>
-                         
-                            <input type="submit" name="sualsp" id="sualsp" value="Sửa" />
-                            <input type="reset" name="reset" id="reset" value="Reset" />
+                            <input type="submit" name="suasanpham" value="Sửa Sản Phẩm">
+                            <input type="reset" name="huy" value="Reset"> 
                         <form>
                     </div>
                 </div>
             <?php } ?>
-                <!-- /.row -->   
+                <!-- /.row -->
