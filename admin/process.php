@@ -203,4 +203,91 @@ if(isset($_GET['xoanguoidung']))
     }
 }
 
+/***********************************************
+*  xử ly phan them truyen
+***********************************************/
+//xử ly phan them truyen
+if(isset($_POST['themtruyen']))
+{
+    $tentr=$_POST['txttruyen'];
+    $idcl=$_POST['chungloai']; //name cua <select>
+    $mota=$_POST['txtmota'];
+    $anhbia=$_FILES["anhbia"]["name"];
+    $ngaydang = date('Y-m-d h:i:s', time());
+    $tinhtrang=$_POST['txttrangthai'];
+    $trangthai=$_POST['txtanhien'];
+
+
+    $addtruyen=" insert into nncms_truyen (idCL, TenTruyen, MoTa, UrlHinh, NgayDang, TrangThai, AnHien) values ('$idcl', '$tentr', '$mota', '$anhbia', '$ngaydang', '$tinhtrang', '$trangthai') ";
+    move_uploaded_file($_FILES["anhbia"]["tmp_name"],"../upload/sanpham/". basename($_FILES["anhbia"]["name"]));
+    if(mysqli_query($con, $addtruyen))
+    {
+        echo "<script>alert('Them thanh cong');location.href='index.php?key=dstruyen';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Thêm Thất Bại! Xin kiểm tra lại');location.href='index.php?key=themtruyen';</script>";
+    }
+}
+
+// xu ly phan sua truyen
+if(isset($_POST['suatruyen']))
+{
+    $tentr=$_POST['txttruyen'];
+    $idcl=$_POST['chungloai']; //name cua <select>
+    $mota=$_POST['txtmota'];
+    $anhbia=$_FILES["anhbia"]["name"];
+    $ngaydang = date('Y-m-d h:i:s', time());
+    $tinhtrang=$_POST['txttrangthai'];
+    $trangthai=$_POST['txtanhien'];
+
+    if ($_FILES["anhbia"]["name"]=="")
+    {
+        $s=" update nncms_truyen set idCL='$idcl', TenTruyen='$tentr', MoTa='$mota', NgayDang='$ngaydang', TrangThai='$tinhtrang' , AnHien='$trangthai' where idTruyen={$_POST['idT']} ";
+        if(mysqli_query($con, $s))
+        {
+            echo "<script>alert('Sửa truyen Thành Công!');location.href='index.php?key=dstruyen';</script>";
+
+        }
+        else
+        {
+            echo "<script>alert('Thất Bại! Sửa Sản Phẩm Chưa Thành Công');</script>";
+        }
+    }
+    else
+    {
+        $s=" update nncms_truyen set idCL='$idcl', TenTruyen='$tentr', MoTa='$mota', UrlHinh='$anhbia', NgayDang='$ngaydang', TrangThai='$tinhtrang', AnHien='$trangthai' where idTruyen={$_POST['idT']} ";
+        move_uploaded_file($_FILES["anhbia"]["tmp_name"],"../upload/sanpham/".$_FILES["anhbia"]["name"]);
+
+        if(mysqli_query($con, $s))
+        {
+            echo "<script>alert('Sửa truyen Thành Công!');location.href='index.php?key=dstruyen';</script>";
+
+        }
+        else
+        {
+            echo "<script>alert('Thất Bại! Sửa Sản Phẩm Chưa Thành Công');</script>";
+        }
+    }
+
+
+}
+
+//xu ly phan xoa truyen
+if(isset($_GET['truyenxoa']))
+{
+//    $s = "delete nncms_truyen, nncms_chuong from nncms_truyen, nncms_chuong where nncms_truyen.idTruyen = nncms_chuong.idTruyen and nncms_truyen.idTruyen = {$_GET['truyenxoa']}";
+    $s="delete from nncms_truyen where idTruyen={$_GET['truyenxoa']}";
+    if(mysqli_query($con, $s))
+    {
+        header("location:index.php?key=dstruyen");
+    }
+    else
+    {
+        echo $s;
+    }
+}
+
+
+
 ?>

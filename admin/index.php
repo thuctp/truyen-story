@@ -95,6 +95,30 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Truyen<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="index.php?key=dstruyen">Danh Sách</a>
+                                </li>
+                                <li>
+                                    <a href="index.php?key=themtruyen">Thêm Mới</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Chuong<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="index.php?key=dschuong">Danh Sách</a>
+                                </li>
+                                <li>
+                                    <a href="index.php?key=themchuong">Thêm Mới</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Loại Sản Phẩm<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -161,6 +185,32 @@
 								case "suachungloai":
 								include("noidung/chungloai/editchungloai.php");
 								break;
+
+                                // truyen
+                                case "dstruyen":
+                                include('noidung/truyen/listtruyen.php');
+                                break;
+
+                                case "themtruyen":
+                                include("noidung/truyen/addtruyen.php");
+                                break;
+
+                                case "suatruyen":
+                                include("noidung/truyen/edittruyen.php");
+                                break;
+
+                                // chuong
+                                case "dschuong":
+                                include('noidung/chuong/listchuong.php');
+                                break;
+
+                                case "themchuong":
+                                include("noidung/chuong/addchuong.php");
+                                break;
+
+                                case "suachuong":
+                                include("noidung/chuong/editchuong.php");
+                                break;
 
 								// loại sản phẩm
 								case "dsloaisp":
