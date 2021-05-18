@@ -1,0 +1,46 @@
+/**
+* css dinh dang menu doc
+*/
+
+#menu{
+	background-color:#FFF;
+}
+#menu .theloai{
+	background-image: url(../img/giaodien/menu-hover.png);
+	color:#0066FF;
+	display:block;
+	padding:5px 0px 5px 10px;
+	font-weight:bold;
+}
+#menu a{
+	color:#9933CC;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:15px;
+	display:block;
+	border-bottom:solid 1px #999;
+	text-decoration:none;
+	font-weight:inherit;
+}
+#menu a:hover{
+	color:#FFFFFF; 
+	/*background-color:#FF00FF;*/
+	background-image: url(../img/giaodien/menu-separator.png);
+}
+/*#menu .theloai:hover{color:black; background:#0F0}*/
+/*keets thu css menu doc css*/
+
+/*dinh dang ten san pham*/
+.ten{
+	height: 25px;
+	overflow: hidden;
+	font-weight: bold;
+	color: black;
+	margin-bottom: 0px;
+}
+p{
+	margin-bottom: 0px;
+}
+ body{
+ 	background-image: url(../images/giaodien/photo360.gif);
+ }
