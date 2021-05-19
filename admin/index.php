@@ -176,6 +176,10 @@
                                 include("noidung/truyen/edittruyen.php");
                                 break;
 
+                                case "themchuongtruyen":
+                                include("noidung/truyen/addchuongtruyen.php");
+                                break;
+
                                 // chuong
                                 case "dschuong":
                                 include('noidung/chuong/listchuong.php');

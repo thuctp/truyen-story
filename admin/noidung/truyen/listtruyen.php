@@ -44,6 +44,7 @@
                                 <th>An Hien</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
+                                <th>Thêm Chuong</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,7 +55,11 @@
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $d2['idTruyen'];?></td>
                                 <td><?php echo $d2['TenTruyen'];?></td>
-                                <td><?php echo $d2['MoTa'];?></td>
+                                <td>
+                                    <div style="max-width: 300px">
+                                        <?php echo substr($d2['MoTa'], 0, 550);?>...
+                                    </div>
+                                </td>
                                 <td><img style="max-width: 150px" src="../upload/sanpham/<?php echo $d2['UrlHinh'];?>"></td>
                                 <td><?php echo $d2['TacGia'];?></td>
                                 <td><?php echo $d2['Nguon'];?></td>
@@ -62,8 +67,11 @@
                                 <td><?php echo $d2['SoLanXem'];?></td>
                                 <td><?php if($d2['TrangThai'] == 1) echo "Hoan Thanh"; else echo "Hot";?></td>
                                 <td><?php if($d2['AnHien'] == 1) echo "Hien"; else echo "An";?></td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return confirm('Bạn có chắc muốn xóa loai san pham <?php echo $d2['TenTruyen'];?> này không ?');" href="process.php?truyenxoa=<?php echo $d2['idTruyen'];?>"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="index.php?key=suatruyen&truyensua=<?php echo $d2['idTruyen'];?>">Edit</a></td>
+                                <td class="center"><a onclick="return confirm('Bạn có chắc muốn xóa loai san pham <?php echo $d2['TenTruyen'];?> này không ?');" href="process.php?truyenxoa=<?php echo $d2['idTruyen'];?>"><i class="fa fa-trash-o  fa-fw"></i> Delete</a></td>
+                                <td class="center"><a href="index.php?key=suatruyen&truyensua=<?php echo $d2['idTruyen'];?>"><i class="fa fa-pencil fa-fw"></i> Edit</a></td>
+                                <td class="center">
+                                    <a href="index.php?key=themchuongtruyen&truyenthemchuong=<?php echo $d2['idTruyen'];?>"><i class="fa fa-plus fa-fw"></i> Add</a>
+                                </td>
                             </tr>
                         <?php } ?>
                         </tbody>

@@ -1,6 +1,6 @@
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Loại Sản Phẩm
+                        <h1 class="page-header">Truyen
                             <small>Thêm Mới</small>
                         </h1>
                     </div>
@@ -33,11 +33,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Mo Ta</label>
-                                <input class="form-control" name="txtmota" required placeholder="Nhập ten truyen mới" />
+                                <textarea class="form-control ckeditor" name="txtmota" required>
+                                </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="ufile">Hình Ảnh</label>
-                                <input type="file" name="anhbia" id="anhbia" />
+                                <input type="file" name="anhbia" id="anhbia" required />
                             </div>
                             <div class="form-group">
                                 <label>Trang Thai</label>

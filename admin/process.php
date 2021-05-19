@@ -184,6 +184,28 @@ if(isset($_POST['themchuong']))
         echo "<script>alert('Thêm Thất Bại! Xin kiểm tra lại');location.href='index.php?key=themchuong';</script>";
     }
 }
+
+//
+if(isset($_POST['themtruyenchuong']))
+{
+    $idtruyen=$_POST['txtidtruyen'] ;
+    $tenchuong=$_POST['txttenchuong'];
+    $noidung=$_POST['txtnoidung'];
+    $ngaydang = date('Y-m-d h:i:s', time());
+
+    $ssp=" insert into nncms_chuong (idTruyen, TenChuong, NoiDung, NgayDang) values ('$idtruyen', '$tenchuong', '$noidung', '$ngaydang') ";
+    if(mysqli_query($con, $ssp))
+    {
+        echo "<script>alert('Them thanh cong');location.href='index.php?key=dstruyen';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Thêm Thất Bại! Xin kiểm tra lại');location.href='index.php?key=themchuongtruyen';</script>";
+    }
+}
+
+
+
 // sửa chuong
 if(isset($_POST['suachuong']))
 {

@@ -41,7 +41,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Mo Ta</label>
-                                <input class="form-control" name="txtmota" required value="<?php echo $dl['MoTa']; ?>" />
+                                <textarea class="form-control ckeditor" name="txtmota" required>
+                                    <?php echo $dl['MoTa']; ?>
+                                </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="ufile">Hình Ảnh</label>

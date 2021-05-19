@@ -27,6 +27,10 @@
 	/*background-color:#FF00FF;*/
 	background-image: url(../img/giaodien/menu-separator.png);
 }
+
+a{
+	text-decoration: none;
+}
 /*#menu .theloai:hover{color:black; background:#0F0}*/
 /*keets thu css menu doc css*/
 
@@ -44,3 +48,9 @@ p{
  body{
  	background-color: #ddd;
  }
+
+@media (min-width: 1200px){
+	.container {
+		width: 1230px;
+	}
+}
