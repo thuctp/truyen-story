@@ -1,12 +1,12 @@
         <?php
-            if(isset($_GET['sanphamsua']))
+            if(isset($_GET['chuongsua']))
             {
-                $idsp=$_GET['sanphamsua'];
-                $s="select * from nncms_sanpham where idSP=$idsp";
+                $idchuong=$_GET['chuongsua'];
+                $s="select * from nncms_chuong where idChuong=$idchuong";
                 $kq=mysqli_query($con, $s);
                 $d=mysqli_fetch_array($kq);
         ?>
-<!--todo-->
+
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Chuong
@@ -30,64 +30,38 @@
                                     <option <?php if(isset($_POST['chungloai']) && $_POST['chungloai'] == $dcl['idCL']) {$idCL = $_POST['chungloai']; echo "selected='selected'";}?> value="<?php echo $dcl['idCL'];?>"><?php echo $dcl['TenCL'];?>
                             <?php } ?>
                                 </select>
-                                <input type="hidden" name="key" value="themsanpham">
-                                <input type="hidden" name="idsp" value="<?php echo $idsp;?>">
+                                <input type="hidden" name="key" value="themchuong">
+
                             </div>
                         </form>
-                        <form id="ssp" name="ssp" action="process.php" method="POST">
+                        <form id="schuong" name="schuong" action="process.php" method="POST">
                             <div class="form-group">
                                 <label><h4>Loại Sản Phẩm:</h4></label>
-                                <select style="width: 300px" class="form-control" name="loai" id="loai">
+                                <select style="width: 300px" class="form-control" name="truyen" id="truyen">
                             <?php 
-                                $sl = "select idLoai, TenLoai from nncms_loaisp where idCL = $idCL order by ThuTu";
+                                $sl = "select idTruyen, TenTruyen from nncms_truyen where idCL = $idCL";
                                 $kql = mysqli_query($con, $sl);
-                                $idL = 0;
+                                $idT = 0;
                                 while($dl = mysqli_fetch_array($kql))
                                 {
-                                  if($idL == 0) $idL = $dl['idLoai'];
+                                  if($idT == 0) $idT = $dl['idTruyen'];
                             ?> 
-                                    <option <?php if(isset($_POST['loai']) && $_POST['loai'] == $dl['idLoai']) {$idL = $_POST['loai']; echo "selected='selected'";}?> value="<?php echo $dl['idLoai'];?>"><?php echo $dl['TenLoai'];?></option>
+                                    <option <?php if(isset($_POST['truyen']) && $_POST['truyen'] == $dl['idTruyen']) {$idL = $_POST['truyen']; echo "selected='selected'";}?> value="<?php echo $dl['idTruyen'];?>"><?php echo $dl['TenTruyen'];?></option>
                             <?php } ?>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Tên Sản Phẩm</label>
-                                <input class="form-control" type="text" name="txttensp" value="<?php echo $d['TenSP']; ?>" required />
+                                <label>Tên Chuong</label>
+                                <input class="form-control" type="text" name="txttenchuong" value="<?php echo $d['TenChuong']; ?>" required />
                             </div>
                             <div class="form-group">
-                                <label>Giá</label>
-                                <input class="form-control" type="number" name="txtgia" value="<?php echo $d['Gia']; ?>" required min="1000" />
+                                <label>Noi Dung</label>
+                                <textarea class="form-control ckeditor" name="txtnoidung">
+                                    <?php echo $d['NoiDung']; ?>
+                                </textarea>
                             </div>
-                            <div class="form-group">
-                                <label>Mô Tả</label>
-                                <textarea class="form-control ckeditor" name="txtmota"><?php echo $d['MoTa']; ?></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Chi Tiết</label>
-                                <textarea class="form-control ckeditor" name="txtchitiet"><?php echo $d['ChiTiet']; ?></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="ufile">Hình Ảnh</label>
-                                <input type="file" name="hinh" id="hinh" />
-                            </div>
-                            <div class="form-group">
-                                <label>Tồn Kho</label>
-                                <input class="form-control" type="number" name="txttonkho" min="1" value="<?php echo $d['TonKho']; ?>" />
-                            </div>
-                            <div class="form-group">
-                                <label>Ghi Chú</label>
-                                <input class="form-control" type="text" name="txtghichu" value="<?php echo $d['GhiChu']; ?>"  />
-                            </div>
-                            <div class="form-group">
-                                <label>Ẩn Hiện</label>
-                                <label class="radio-inline">
-                                    <input name="txtanhien" <?php if( $d['AnHien'] == 0) echo 'checked=""';?> value="0" checked="" type="radio">Ẩn
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="txtanhien" <?php if( $d['AnHien'] == 1) echo 'checked=""';?> value="1" type="radio">Hiện
-                                </label>
-                            </div>
-                            <input type="submit" name="suasanpham" value="Sửa Sản Phẩm">
+                            <input type="hidden" name="idchuong" value="<?php echo $idchuong;?>">
+                            <input type="submit" name="suachuong" value="Sửa Sản Phẩm">
                             <input type="reset" name="huy" value="Reset"> 
                         <form>
                     </div>
