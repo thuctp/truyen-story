@@ -1,30 +1,19 @@
-<div class="row">
-	<div class="col-sm-12">
-		<?php include('noidung/giohang.php') ;?>
-	</div>
-</div>
 
-<!-- danh muc -->
-<div class="row">
-	<div class="col-sm-12">
-		<?php include('menu/menudoc.php') ;?>
-	</div>
-</div>
-
-<!-- thong tin hang su dung -->
+<!-- The Loai truyen -->
 <div class="row">
 	<div class="col-sm-12">
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				<b>Hãng Sản Xuất</b>
+				<b>The Loai Truyen</b>
 			</div>
 			<div class="panel-body">
-				<?php
-				$kqhsx=mysqli_query($con, "select idHSX, idCL, TenHang, ThuTu, AnHien from nncms_hangsanxuat where AnHien=1 order by ThuTu limit 0,5");
-				while ( $dhsx=mysqli_fetch_array($kqhsx)) {
-				?>
-				<a style="text-decoration:none;display: block;border-bottom:1px dotted #999;" href="index.php?key=hangsanxuat&idHSX=<?php echo $dhsx['idHSX'];?>"><?php echo $dhsx['TenHang'] ;?></a>
-				<?php } ?>
+                <ul>
+                    <?php $listTheLoai=mysqli_query($con, "select idCL, TenCL, ThuTu, AnHien from nncms_chungloai where AnHien=1 order by ThuTu limit 0,15");
+                    while ($looptheloai=mysqli_fetch_array($listTheLoai)){
+                        ?>
+                        <li> <?php echo $looptheloai['TenCL'] ?> </li>
+                    <?php } ?>
+                </ul>
 			</div>
 		</div>
 	</div>
@@ -39,17 +28,18 @@
 			</div>
 			
 			<div class="panel-body">
-			<marquee id="marq" scrollamount="3" direction="left" loop="50" scrolldelay="0" onmouseover="this.stop()" onmouseout="this.start()" >
-			<?php
-				$kqxn=mysqli_query($con, "select idSP, UrlHinh, SoLanXem, AnHien from nncms_sanpham where AnHien=1 order by SoLanXem DESC limit 0,10");
-				while ($dxn=mysqli_fetch_array($kqxn)) {
-			?>		
-					<a style="text-decoration:none; margin-right: 30px" href="index.php?key=chitietsanpham&idSP=<?php echo $dxn['idSP'] ;?>" target="">
-						<img src="upload/sanpham/<?php echo $dxn['UrlHinh'];?>" alt="sanpham">
-					</a>
 
-			<?php } ?>
-			</marquee>
+                <ul>
+                    <?php $listTheLoaiXemNhieu=mysqli_query($con, "select idTruyen, TenTruyen, SoLanXem, UrlHinh, AnHien from nncms_truyen where AnHien=1 order by SoLanXem DESC limit 0,15");
+                    while ($looptheloailxem=mysqli_fetch_array($listTheLoaiXemNhieu)){
+                        ?>
+                        <li>
+                            <a style="text-decoration:none;" href="index.php?key=chitiettruyen&idtruyen=<?php echo $looptheloailxem['idTruyen'] ;?>" target="">
+                                <?php echo $looptheloailxem['TenTruyen'] ?>
+                            </a>
+                        </li>
+                    <?php } ?>
+                </ul>
 			</div>
 			
 		</div>

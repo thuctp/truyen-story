@@ -118,30 +118,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Loại Sản Phẩm<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="index.php?key=dsloaisp">Danh Sách</a>
-                                </li>
-                                <li>
-                                    <a href="index.php?key=themloaisp">Thêm Mới</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i> Sản Phẩm <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="index.php?key=dssanpham">Danh Sách</a>
-                                </li>
-                                <li>
-                                    <a href="index.php?key=themsanpham">Thêm Mới</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -211,32 +188,6 @@
                                 case "suachuong":
                                 include("noidung/chuong/editchuong.php");
                                 break;
-
-								// loại sản phẩm
-								case "dsloaisp":
-								include('noidung/loaisanpham/listloaisp.php');
-								break;
-
-								case "themloaisp":
-								include("noidung/loaisanpham/addloaisp.php");
-								break;
-
-								case "sualoaisp":
-								include("noidung/loaisanpham/editloaisp.php");
-								break;
-
-								//sanr phaamr
-								case "dssanpham":
-								include('noidung/sanpham/listsanpham.php');
-								break;
-
-								case "themsanpham":
-								include("noidung/sanpham/addsanpham.php");
-								break;
-
-								case "suasanpham":
-								include("noidung/sanpham/editsanpham.php");
-								break;
 
 								//taif khoang user
 								case "dsuser":

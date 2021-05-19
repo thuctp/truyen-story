@@ -55,24 +55,16 @@ if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=array(); //khoi tao gio ha
 						{
 						switch($_GET["key"])
 						    {
-								case "chitietsanpham":
-								include("noidung/chitietsanpham.php");
+								case "chitiettruyen":
+								include("noidung/chitiettruyen.php");
 								break;
 
 								case "sploai":
 								include("noidung/danhsachloai.php");
 								break;
 
-								case "hangsanxuat":
-								include("noidung/hangsanxuat.php");
-								break;
-
 								case 'dangkynguoidung':
 								include("noidung/dangkynguoidung.php");
-								break;
-
-								case 'dathang':
-								include("noidung/dathang.php");
 								break;
 
 								case 'suauser':
