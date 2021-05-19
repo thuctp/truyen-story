@@ -41,8 +41,8 @@ if(isset($_POST['suacl']))
 //xóa dữ liệu the loai 
 if(isset($_GET['idCL'])) 
 {
-	$s = "delete from nncms_sanpham where idLoai in (select idLoai from nncms_loaisp where idCL={$_GET['idCL']}) ";
-	$s2 = " delete from nncms_loaisp where idCL= {$_GET['idCL']}";
+	$s = "delete from nncms_chuong where idTruyen in (select idTruyen from nncms_truyen where idCL={$_GET['idCL']}) ";
+	$s2 = " delete from nncms_truyen where idCL= {$_GET['idCL']}";
 	$s3 = " delete from nncms_chungloai where idCL = {$_GET['idCL']}";
 	mysqli_query($con, $s);
 	mysqli_query($con, $s2);
@@ -83,13 +83,15 @@ if(isset($_POST['themtruyen']))
     $tentr=$_POST['txttruyen'];
     $idcl=$_POST['chungloai']; //name cua <select>
     $mota=$_POST['txtmota'];
+    $tacgia=$_POST['txttacgia'];
+    $nguon=$_POST['txtnguon'];
     $anhbia=$_FILES["anhbia"]["name"];
     $ngaydang = date('Y-m-d h:i:s', time());
     $tinhtrang=$_POST['txttrangthai'];
     $trangthai=$_POST['txtanhien'];
 
 
-    $addtruyen=" insert into nncms_truyen (idCL, TenTruyen, MoTa, UrlHinh, NgayDang, TrangThai, AnHien) values ('$idcl', '$tentr', '$mota', '$anhbia', '$ngaydang', '$tinhtrang', '$trangthai') ";
+    $addtruyen=" insert into nncms_truyen (idCL, TenTruyen, TacGia, Nguon, MoTa, UrlHinh, NgayDang, TrangThai, AnHien) values ('$idcl', '$tentr', '$tacgia', '$nguon', '$mota', '$anhbia', '$ngaydang', '$tinhtrang', '$trangthai') ";
     move_uploaded_file($_FILES["anhbia"]["tmp_name"],"../upload/sanpham/". basename($_FILES["anhbia"]["name"]));
     if(mysqli_query($con, $addtruyen))
     {
@@ -107,6 +109,8 @@ if(isset($_POST['suatruyen']))
     $tentr=$_POST['txttruyen'];
     $idcl=$_POST['chungloai']; //name cua <select>
     $mota=$_POST['txtmota'];
+    $tacgia=$_POST['txttacgia'];
+    $nguon=$_POST['txtnguon'];
     $anhbia=$_FILES["anhbia"]["name"];
     $ngaydang = date('Y-m-d h:i:s', time());
     $tinhtrang=$_POST['txttrangthai'];
@@ -114,7 +118,7 @@ if(isset($_POST['suatruyen']))
 
     if ($_FILES["anhbia"]["name"]=="")
     {
-        $s=" update nncms_truyen set idCL='$idcl', TenTruyen='$tentr', MoTa='$mota', NgayDang='$ngaydang', TrangThai='$tinhtrang' , AnHien='$trangthai' where idTruyen={$_POST['idT']} ";
+        $s=" update nncms_truyen set idCL='$idcl', TenTruyen='$tentr', TacGia='$tacgia', Nguon='$nguon', MoTa='$mota', NgayDang='$ngaydang', TrangThai='$tinhtrang' , AnHien='$trangthai' where idTruyen={$_POST['idT']} ";
         if(mysqli_query($con, $s))
         {
             echo "<script>alert('Sửa truyen Thành Công!');location.href='index.php?key=dstruyen';</script>";

@@ -34,7 +34,7 @@
     </ul>
 
 
-    <div class="nav navbar-nav navbar-left hidden-md hidden-sm">
+    <div class="nav navbar-nav navbar-left hidden-md hidden-sm" style="display: none!important;">
       <!-- fom timf kiem-->
         <form class="navbar-form navbar-left" method="post" action="" id="form1" name="form1">
           <div class="input-group">

@@ -32,6 +32,14 @@
                                 <input class="form-control" name="txttruyen" required value="<?php echo $dl['TenTruyen']; ?>" />
                             </div>
                             <div class="form-group">
+                                <label>Tac Gia</label>
+                                <input class="form-control" name="txttacgia" value="<?php echo $dl['TacGia']; ?>" />
+                            </div>
+                            <div class="form-group">
+                                <label>Nguon</label>
+                                <input class="form-control" name="txtnguon" value="<?php echo $dl['Nguon']; ?>" />
+                            </div>
+                            <div class="form-group">
                                 <label>Mo Ta</label>
                                 <input class="form-control" name="txtmota" required value="<?php echo $dl['MoTa']; ?>" />
                             </div>

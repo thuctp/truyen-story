@@ -2,6 +2,12 @@
     $idGetTruyen = $_GET['idtruyen'];
 	$kqtruyen=mysqli_query($con, "select * from nncms_truyen where idTruyen=$idGetTruyen");
 	$dctt=mysqli_fetch_array($kqtruyen);
+
+
+    $couterview = "UPDATE  nncms_truyen  SET SoLanXem = SoLanXem+1 WHERE idTruyen = $idGetTruyen";
+    $kqsql=mysqli_query($con, $couterview);
+//    $kqview=mysqli_fetch_array($kqsql);
+
 ;?>
 <div class="panel panel-primary">
 	<div class="panel-heading">
@@ -21,7 +27,8 @@
 					<div class="panel-body">
                         <div><h2><?php echo $dctt['TenTruyen'] ;?></h2></div>
 						<div><?php echo $dctt['MoTa'] ;?> </div>
-						<div>Nguon Truyen </div>
+						<div>Tac Gia: <?php echo $dctt['TacGia'] ;?> </div>
+						<div>Nguon Truyen: <?php echo $dctt['Nguon'] ;?> </div>
 						<div>Ngay Dang: <?php echo $dctt['NgayDang'] ;?> </div>
 						<div>Luot Xem: <?php echo $dctt['SoLanXem'] ;?> </div>
 						<div>Trang Thai: <?php echo $dctt['TrangThai'] ;?> </div>

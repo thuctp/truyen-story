@@ -49,7 +49,7 @@ if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=array(); //khoi tao gio ha
 		<?php
 			if(!isset($_GET["key"]))
 					{
-						include('noidung/sanpham.php') ;
+						include('noidung/trangchu.php') ;
 					}
 					else
 						{

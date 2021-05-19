@@ -35,12 +35,12 @@
                                 <th>ID</th>
                                 <th>Tên Truyen</th>
                                 <th>Mo ta</th>
-
                                 <th>Anh Bia</th>
+                                <th>Tac Gia</th>
+                                <th>Nguon Truyen</th>
                                 <th>Ngay Dang</th>
                                 <th>So Luot Xem</th>
                                 <th>Trang Thai</th>
-
                                 <th>An Hien</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
@@ -56,6 +56,8 @@
                                 <td><?php echo $d2['TenTruyen'];?></td>
                                 <td><?php echo $d2['MoTa'];?></td>
                                 <td><img style="max-width: 150px" src="../upload/sanpham/<?php echo $d2['UrlHinh'];?>"></td>
+                                <td><?php echo $d2['TacGia'];?></td>
+                                <td><?php echo $d2['Nguon'];?></td>
                                 <td><?php echo $d2['NgayDang'];?></td>
                                 <td><?php echo $d2['SoLanXem'];?></td>
                                 <td><?php if($d2['TrangThai'] == 1) echo "Hoan Thanh"; else echo "Hot";?></td>

@@ -24,6 +24,14 @@
                                 <input class="form-control" name="txttruyen" required placeholder="Nhập ten truyen mới" />
                             </div>
                             <div class="form-group">
+                                <label>Tac Gia</label>
+                                <input class="form-control" name="txttacgia" value="Users" />
+                            </div>
+                            <div class="form-group">
+                                <label>Nguon</label>
+                                <input class="form-control" name="txtnguon" value="Internet" />
+                            </div>
+                            <div class="form-group">
                                 <label>Mo Ta</label>
                                 <input class="form-control" name="txtmota" required placeholder="Nhập ten truyen mới" />
                             </div>
