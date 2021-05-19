@@ -8,9 +8,12 @@ if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=array(); //khoi tao gio ha
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/scss/bootstrap.css" rel="stylesheet" />
+    <link href="lib/fontawesome5/css/fontawesome.css" rel="stylesheet">
+    <link href="lib/fontawesome5/css/brands.css" rel="stylesheet">
+    <link href="lib/fontawesome5/css/solid.css" rel="stylesheet">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<script src="js/bootstrap.bundle.min.js"></script>
+  	<script src="lib/js/bootstrap.bundle.min.js"></script>
 
 	<title>website ban hang</title>
 	<link href="css/stype.css" rel="stylesheet" />
@@ -42,10 +45,10 @@ if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=array(); //khoi tao gio ha
 
 <div class="container pt-4">
 <!--phan noi dung -->
-	<div class="row">
+	<div class="d-lg-flex">
 			<!-- bat dau phan noi dung -->
 			<!-- phan nay la phan thay doi khi co key gan vao -->
-		<div class="col-lg-9 col-12">
+		<div class="main-content">
 
 		<?php
 			if(!isset($_GET["key"]))
@@ -60,9 +63,13 @@ if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=array(); //khoi tao gio ha
 								include("noidung/chitiettruyen.php");
 								break;
 
-								case "sploai":
-								include("noidung/danhsachloai.php");
-								break;
+//								case "sploai":
+//								include("noidung/danhsachloai.php");
+//								break;
+
+                                case "truyenCL":
+                                include("noidung/danhsachloai.php");
+                                break;
 
 								case 'dangkynguoidung':
 								include("noidung/dangkynguoidung.php");
@@ -80,7 +87,7 @@ if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=array(); //khoi tao gio ha
 			<!-- ket thuc phan nay la phan thay doi khi co key gan vao -->
 			<!-- ket thuc phan noidung phan noi dung -->
 		<!-- phan noi dung en trai -->	
-		<div class="col-lg-3 col-12">
+		<div class="left-content">
 			<?php include("noidung/left.php") ;?>
 		</div>
 		<!--ket thu phan noi dung en trai -->

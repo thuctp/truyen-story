@@ -63,3 +63,39 @@
     background-image: linear-gradient(to right, #fd5d14, #ddd);
   }
 }
+
+.title-heading-section{
+  margin-bottom: 24px;
+  position: relative;
+  display: inline-block;
+  color: #fd5d14;
+}
+
+ul.c-ul-type-none{
+  list-style-type: none!important;
+}
+.c-list-loai-truyen{
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  li{
+    width: 50%;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+}
+
+.main-content{flex-grow: 1;}
+.left-content{
+  flex-shrink: 0;
+  width: 300px;
+  margin-left: 20px;
+}
+
+.custom-pagination{
+  margin-top: 24px;
+  margin-bottom: 48px;
+  border: solid 1px #000;
+  padding: 8px 24px;
+}
