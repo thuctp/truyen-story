@@ -18,8 +18,8 @@
                 <input type="hidden" name="id" value="<?php echo $_SESSION['nguoidung']; ?>">
 
                 <div style="text-align: center;font-weight: bold;color: red">
-                  <button type="submit" class="btn btn-default" name="doimatkhau">Đổi Mật Khẩu</button>
-                  <button style="margin: 0 30px 0 30px" type="reset" class="btn btn-default" name="huy">Reset</button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary text-white" name="doimatkhau">Đổi Mật Khẩu</button>
+                  <button style="margin: 0 30px 0 30px" type="reset" class="btn btn-outline-primary" name="huy">Reset</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
             </form>

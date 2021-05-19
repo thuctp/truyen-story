@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             <label>Giới Tính :</label>
-            <label class="radio-inline">
+            <label class="radio-inline me-3">
                 <input name="gioitinh" value="0" checked="" type="radio">Nam
             </label>
             <label class="radio-inline">
