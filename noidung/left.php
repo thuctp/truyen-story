@@ -30,7 +30,7 @@
                     <div class="wrap-img-small"><img class="card-img-small"
                               src="upload/sanpham/<?php echo $looptheloailxem['UrlHinh'];?>" alt="hinh"></div>
                     <a class="text-dark" href="index.php?key=chitiettruyen&idtruyen=<?php echo $looptheloailxem['idTruyen'] ;?>">
-                        <p class="fs-14 text-truncate"><?php echo $looptheloailxem['TenTruyen'] ?></p>
+                        <p class="fs-14 text-truncate fw-600"><?php echo $looptheloailxem['TenTruyen'] ?></p>
                     </a>
                     <small>
                         <i class="fas fa-eye fa-sm"></i>

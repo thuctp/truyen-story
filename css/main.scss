@@ -129,3 +129,16 @@ ul.c-ul-type-none{
     }
   }
 }
+
+.icon-detail-truyen{
+  width: 26px;
+  display: inline-block;
+  color: #fd5d14;
+}
+
+.wrap-truyen-detail{
+  .truyen-detail-item{
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}

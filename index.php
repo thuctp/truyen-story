@@ -33,11 +33,6 @@ if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=array(); //khoi tao gio ha
 </head>
 <body>
 <?php include("connect.php") ;?>
-<div class="container-fluid">
-	<div class="jumbotron" style="padding: 0px; margin: 0px">
-    	<img src="img/banner/bia.png" width="100%">
-  </div>
-</div><!--div the chinh-->
 
 <!-- phan menu cua website -->
 <?php include('noidung/menu.php') ;?>
