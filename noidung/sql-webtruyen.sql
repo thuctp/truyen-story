@@ -58,7 +58,7 @@ CREATE TABLE `nncms_chuong` (
   `SoLanXem` int(255) NOT NULL DEFAULT 0,
   `NoiDung` text CHARACTER SET utf8 NOT NULL,
   `NgayDang` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `nncms_chuong`
@@ -177,7 +177,7 @@ CREATE TABLE `nncms_truyen` (
   `SoLanXem` int(255) NOT NULL DEFAULT 0,
   `TrangThai` tinyint(4) NOT NULL,
   `AnHien` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `nncms_truyen`
