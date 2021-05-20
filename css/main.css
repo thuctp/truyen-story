@@ -116,4 +116,18 @@ ul.c-ul-type-none {
   max-height: 500px;
   overflow-y: auto; }
 
+.box-select-pagination-top {
+  display: inline-block;
+  margin-left: 12px;
+  margin-right: 12px; }
+  .box-select-pagination-top ul.dropdown-menu {
+    max-height: 400px;
+    overflow-y: auto; }
+    .box-select-pagination-top ul.dropdown-menu li {
+      border-bottom: solid 1px #ddd; }
+      .box-select-pagination-top ul.dropdown-menu li:last-child {
+        border-bottom: 0; }
+    .box-select-pagination-top ul.dropdown-menu li.active-select {
+      background-color: yellow; }
+
 /*# sourceMappingURL=main.css.map */

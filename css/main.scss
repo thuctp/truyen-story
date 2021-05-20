@@ -142,3 +142,23 @@ ul.c-ul-type-none{
     overflow-y: auto;
   }
 }
+
+.box-select-pagination-top{
+  display: inline-block;
+  margin-left: 12px;
+  margin-right: 12px;
+  ul.dropdown-menu{
+    max-height: 400px;
+    li{
+      border-bottom: solid 1px #ddd;
+      &:last-child{
+        border-bottom: 0;
+      }
+    }
+    overflow-y: auto;
+    li.active-select{
+      background-color: yellow;
+    }
+  }
+}
+
