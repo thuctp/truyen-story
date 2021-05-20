@@ -1,6 +1,5 @@
 <?php
-session_start(); 
-if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=array(); //khoi tao gio hang bang dau bang array
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,17 +17,6 @@ if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=array(); //khoi tao gio ha
 	<title>website ban hang</title>
 	<link href="css/stype.css" rel="stylesheet" />
 	<link href="css/main.css" rel="stylesheet" />
-
-
-	<script type="text/javascript">
-	// <![CDATA[
-	var myMenu;
-	window.onload = function() {
-		myMenu = new SDMenu("my_menu");
-		myMenu.init();
-	};
-	// ]]>
-	</script>
 
 </head>
 <body>
@@ -58,9 +46,9 @@ if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=array(); //khoi tao gio ha
 								include("noidung/chitiettruyen.php");
 								break;
 
-//								case "sploai":
-//								include("noidung/danhsachloai.php");
-//								break;
+								case "chuong":
+								include("noidung/chuong.php");
+								break;
 
                                 case "truyenCL":
                                 include("noidung/danhsachloai.php");

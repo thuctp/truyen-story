@@ -34,65 +34,6 @@ if(isset($_GET['huydn']))
 	header("location:index.php");
 }
 
-
-/*****************************************************
-*	xử lý phần giỏ hàng
-******************************************************/
-if(isset($_GET['dat'])){
-
-	$kiemtra=0;
-	for($i=0; $i<count($_SESSION['giohang']); $i++){ 
-		if($_GET['idSP']==$_SESSION['giohang'][$i]['idSP']){
-			$kiemtra=1; //
-			$_SESSION['giohang'][$i]['soluong']+=$_GET['soluong'];
-			break;
-		}
-	}
-
-	if($kiemtra==0){
-		$_SESSION['giohang'];
-		include("connect.php");
-		$s="select idSP, TenSP, Gia,UrlHinh from nncms_sanpham where idSP={$_GET['idSP']}";
-		$kq=mysqli_query($con, $s);
-		$d=mysqli_fetch_array($kq);
-		$soluong=isset($_GET['soluong']) ? $_GET['soluong'] : 1;
-
-		// bắt đàu tạo giở hàng và vào đàu trang index để đạt biến kiểm tra. khởi tạo giỏ hàng và các thuộc tính cần lưu tạm khi mua hàng các session này có tác dụng đưa thông tin ở phần truy vấn dữ liệu và có thể mang ra in ở các trang khác và dduocj lưu vào các session tương ứng mới khỏi tạo ở dưới
-		$k=count($_SESSION['giohang']); //để ngắn gọi thì ta gọi biến đếm session giỏ hàng là biến k
-		$_SESSION['giohang'][$k]['idSP']=$d['idSP']; //cach khai báo biến session tương ứng lần lược là giỏ hàng rồi dêm giỏ hàng và tên tương ứng
-		$_SESSION['giohang'][$k]['gia']=$d['Gia'];
-		$_SESSION['giohang'][$k]['ten']=$d['TenSP'];
-		$_SESSION['giohang'][$k]['hinh']=$d['UrlHinh'];	
-		$_SESSION['giohang'][$k]['soluong']=$soluong;
-	}
-	header("location:index.php");
-}
-//cập nhật giỏ hàng
-if(isset($_GET['capnhat'])){
-	for($i=0; $i<count($_SESSION['giohang']); $i++){
-		$_SESSION['giohang'][$i]['soluong']=$_GET['SL'.$i];
-	}
-	header("location:index.php");
-}
-
-//xóa từng sản phẩm san pham
-if(isset($_GET['xoa'])){
-	for($i=$_GET['xoa']; $i<count($_SESSION['giohang']); $i++){
-		$j=$i+1;
-		$_SESSION['giohang'][$i]=$_SESSION['giohang'][$j];
-	}
-	$temp = count($_SESSION['giohang'])-1;
-	unset($_SESSION['giohang'][$temp]);
-	header("location:index.php");
-}
-
-//xóa từng sản phẩm san pham
-if(isset($_GET['huytatca'])){
-	unset($_SESSION['giohang']);
-	header("location:index.php");
-}
-
-
 /*****************************************************
 *	xử lý phần đăng ký tài khaongr người dùng
 ******************************************************/
@@ -117,40 +58,6 @@ if(isset($_POST['dangky']))
 	else
 	{
 		echo "<script>alert('Thất Bại!, Email đã được sử dụng hoặc vui lòng kiểm trả thông tin của bạn'); location.href='index.php?key=dangkynguoidung'; </script>";
-	}
-}
-
-/*****************************************************
-*	xử lý phần đặt hàng
-******************************************************/
-if (isset($_POST['dathang'])) {
-	$idnd=$_POST['idnguoidung'];
-	$ten=$_POST['ten'];
-	$diadiem=$_POST['diadiem'];
-	$email=$_POST['email'];
-	$sdt=$_POST['sdt'];
-	$ghichu=$_POST['ghichu'];
-	$ngaydangky = date('Y-m-d');
-	$ngaygiao = strtotime(date('Y-m-d', strtotime($ngaydangky)). "+1 week");
-	$ngaygiao = strftime("%Y-%m-%d", $ngaygiao);
-
-	$s=" insert into nncms_donhang (idNguoiDung, ThoiGianDat, TenNguoiNhan, DiaDiemGiao, NgayGiaoHang, Email, DienThoai, GhiChu, TinhTrang) values ($idnd, '$ngaydangky', '$ten', '$diadiem', '$ngaygiao', '$email', '$sdt', '$ghichu', 0) ";
-	if(mysqli_query($con, $s))
-	{
-		$mahd=mysqli_insert_id();
-		for($i=0; $i<count($_SESSION['giohang']); $i++){
-			$idsp=$_SESSION['giohang'][$i]['idSP'];
-			$soluong=$_SESSION['giohang'][$i]['soluong'];
-			$gia=$_SESSION['giohang'][$i]['gia'];
-			$ss = "insert into nncms_donhangchitiet values('$mahd','$idsp','$soluong','$gia')";
-			mysqli_query($con, $ss);
-		}
-		unset($_SESSION['giohang']);
-		include('gmaildathang.php');
-
-	}
-	else{
-		echo "that bai";
 	}
 }
 

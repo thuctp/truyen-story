@@ -3,6 +3,13 @@
 	$kqtruyen=mysqli_query($con, "select * from nncms_truyen where idTruyen=$idGetTruyen");
 	$dctt=mysqli_fetch_array($kqtruyen);
 
+    //add page cho chuong
+    $sodong=1; // 12 san pham ad
+    $kqsp=mysqli_query($con, "select * from nncms_chuong where idTruyen={$idGetTruyen}");
+    $tongsotrang=ceil(mysqli_num_rows($kqsp)/$sodong)+1;
+    $startsotrang=0;
+    //end add page cho chuong
+
 
     $couterview = "UPDATE  nncms_truyen  SET SoLanXem = SoLanXem+1 WHERE idTruyen = $idGetTruyen";
     $kqsql=mysqli_query($con, $couterview);
@@ -51,14 +58,18 @@
 
     <ul class="list-group">
         <?php
-        $listChuong="select * from nncms_chuong where idTruyen = $idGetTruyen order by NgayDang DESC limit 0,10 ";
+        $listChuong="select * from nncms_chuong where idTruyen = $idGetTruyen order by NgayDang DESC, idChuong DESC limit 0,10 ";
         $kqlc=mysqli_query($con, $listChuong);
         $checkDATA=mysqli_num_rows($kqlc);
+
         if($checkDATA > 0){
         while ($dlq=mysqli_fetch_array($kqlc)) {
+            $tongsotrang=$tongsotrang-1
         ?>
         <li class="list-group-item">
+            <a class="text-dark" href="index.php?key=chuong&idchuong=<?php echo $dlq['idChuong'] ;?>&p=<?php echo $tongsotrang; ?>">
             <?php echo $dlq['TenChuong'] ;?>
+            </a>
         </li>
         <?php }
         } else{ ?>
@@ -97,9 +108,12 @@
         $checkDATA=mysqli_num_rows($kqsp);
         if($checkDATA > 0){
         while ($d=mysqli_fetch_array($kqsp)) {
+            $startsotrang=$startsotrang+1
             ?>
             <li class="list-group-item">
+                <a class="text-dark" href="index.php?key=chuong&idchuong=<?php echo $d['idChuong'] ;?>&p=<?php echo $startsotrang; ?>">
                 <?php echo $d['TenChuong'] ;?>
+                </a>
             </li>
         <?php } } else{ ?>
             <li class="list-group-item py-4">
