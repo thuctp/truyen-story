@@ -1,7 +1,6 @@
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Chủng Loại
-                        </h1>
+                        <h1 class="page-header">Danh Sách Thể Loại Truyện</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example"> <!-- id để có dduocj thanh tìm kiếm và phân trang -->

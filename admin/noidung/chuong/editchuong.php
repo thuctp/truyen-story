@@ -9,16 +9,16 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Chuong
-                            <small>Sua Chuong</small>
+                        <h1 class="page-header">Chương
+                            <small>Sửa Chương</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-11" style="padding-bottom:120px">
                         <form id="form1" name="form1" action="" method="POST">
                             <div class="form-group">
-                                <label><h4>Chủng Loại:</h4></label>
-                                <select style="width: 300px" class="form-control" name="chungloai" id="chungloai" onchange="form1.submit()">
+                                <label><h4>Thể Loại:</h4></label>
+                                <select style="width: 300px" class="form-control" name="chungloai" id="chungloai" onchange="form1.submit()" disabled="true">
                             <?php 
                                 $scl = "Select idCL, TenCL from nncms_chungloai";
                                 $kqcl = mysqli_query($con, $scl);
@@ -51,17 +51,21 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Tên Chuong</label>
+                                <label>Chương Số</label>
+                                <input class="form-control" type="number" name="txtchuongso" value="<?php echo $d['ChuongSo']; ?>" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Tên Chương</label>
                                 <input class="form-control" type="text" name="txttenchuong" value="<?php echo $d['TenChuong']; ?>" required />
                             </div>
                             <div class="form-group">
-                                <label>Noi Dung</label>
-                                <textarea class="form-control ckeditor" name="txtnoidung">
+                                <label>Nội Dung</label>
+                                <textarea class="form-control ckeditor" name="txtnoidung" required>
                                     <?php echo $d['NoiDung']; ?>
                                 </textarea>
                             </div>
                             <input type="hidden" name="idchuong" value="<?php echo $idchuong;?>">
-                            <input type="submit" name="suachuong" value="Sửa Sản Phẩm">
+                            <input type="submit" name="suachuong" value="Sửa Chương">
                             <input type="reset" name="huy" value="Reset"> 
                         <form>
                     </div>

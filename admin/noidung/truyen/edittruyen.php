@@ -7,8 +7,8 @@
         ?>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Truyen
-                            <small>Chinh Sua</small>
+                        <h1 class="page-header">Truyện
+                            <small>Chỉnh Sửa</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -28,19 +28,19 @@
                                 <input type="hidden" name="idT" value="<?php echo $idT ;?>"/>
                             </div>
                             <div class="form-group">
-                                <label>Tên Truyen</label>
+                                <label>Tên Truyện</label>
                                 <input class="form-control" name="txttruyen" required value="<?php echo $dl['TenTruyen']; ?>" />
                             </div>
                             <div class="form-group">
-                                <label>Tac Gia</label>
+                                <label>Tác Giả</label>
                                 <input class="form-control" name="txttacgia" value="<?php echo $dl['TacGia']; ?>" />
                             </div>
                             <div class="form-group">
-                                <label>Nguon</label>
+                                <label>Nguồn Truyện</label>
                                 <input class="form-control" name="txtnguon" value="<?php echo $dl['Nguon']; ?>" />
                             </div>
                             <div class="form-group">
-                                <label>Mo Ta</label>
+                                <label>Mô Tả</label>
                                 <textarea class="form-control ckeditor" name="txtmota" required>
                                     <?php echo $dl['MoTa']; ?>
                                 </textarea>
@@ -50,12 +50,12 @@
                                 <input type="file" name="anhbia" id="anhbia" />
                             </div>
                             <div class="form-group">
-                                <label>Trang Thai</label>
+                                <label>Trạng Thái</label>
                                 <label class="radio-inline">
                                     <input name="txttrangthai" <?php if( $dl['TrangThai'] == 0) echo 'checked=""';?> value="0" checked="" type="radio">Hot
                                 </label>
                                 <label class="radio-inline">
-                                    <input name="txttrangthai" <?php if( $dl['TrangThai'] == 1) echo 'checked=""';?> value="1" type="radio">Hoan Thanh
+                                    <input name="txttrangthai" <?php if( $dl['TrangThai'] == 1) echo 'checked=""';?> value="1" type="radio">Hoàn Thành
                                 </label>
                             </div>
                             <div class="form-group">
@@ -68,7 +68,8 @@
                                 </label>
                             </div>
                          
-                            <input type="submit" name="suatruyen" id="suatruyen" value="Sửa" />
+                            <input type="submit" name="suatruyen" id="suatruyen" value="Sửa Truyện" />
+                            &nbsp;
                             <input type="reset" name="reset" id="reset" value="Reset" />
                         <form>
                     </div>

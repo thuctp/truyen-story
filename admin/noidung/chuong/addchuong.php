@@ -1,14 +1,14 @@
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Chuong
-                            <small>Thêm Mới</small>
+                        <h1 class="page-header">Chương
+                            <small>Thêm Chương Mới</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-11" style="padding-bottom:120px">
                         <form id="form1" name="form1" action="" method="POST">
                             <div class="form-group">
-                                <label><h4>Chủng Loại:</h4></label>
+                                <label><h4>Thể Loại:</h4></label>
                                 <select style="width: 300px" class="form-control" name="chungloai" id="chungloai" onchange="form1.submit()">
                             <?php 
                                 $scl = "Select idCL, TenCL from nncms_chungloai";
@@ -26,7 +26,7 @@
                         </form>
                         <form id="sp" name="sp" action="process.php" method="POST">
                             <div class="form-group">
-                                <label><h4>Truyen:</h4></label>
+                                <label><h4>Truyện:</h4></label>
                                 <select style="width: 300px" class="form-control" name="truyen" id="truyen">
                             <?php 
                                 $sl = "select idTruyen, TenTruyen from nncms_truyen where idCL = $idCL";
@@ -41,14 +41,18 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Tên Chuong</label>
-                                <input class="form-control" type="text" name="txttenchuong" placeholder="Nhập tên sản phẩm" required />
+                                <label>Chương Số</label>
+                                <input class="form-control" type="number" name="txtchuongso" placeholder="Nhập số chương" required />
                             </div>
                             <div class="form-group">
-                                <label>Noi Dung</label>
+                                <label>Tên Chương</label>
+                                <input class="form-control" type="text" name="txttenchuong" placeholder="Nhập tên chương (vd: Chương 1: abc)" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Nội Dung</label>
                                 <textarea class="form-control ckeditor" name="txtnoidung"></textarea>
                             </div>
-                            <input type="submit" name="themchuong" value="Thêm Mới">
+                            <input type="submit" name="themchuong" value="Thêm Chương">
                             <input type="reset" name="huy" value="Reset"> 
                         <form>
                     </div>

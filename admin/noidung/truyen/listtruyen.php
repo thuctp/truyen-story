@@ -1,9 +1,8 @@
                 <div class="row">
-                    <div class="col-lg-4">
-                        <h1 class="page-header">Truyen
-                        </h1>
+                    <div class="col-12">
+                        <h1 class="page-header">Danh Sách Truyện</h1>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-12" style="margin-bottom: 48px">
                         <form name="form1" id="form1" action="" method="get">
                             <div class="form-group">
                                 <label><h4>Chủng Loại</h4></label>

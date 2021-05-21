@@ -8,6 +8,9 @@ $d=mysqli_fetch_array($kq);
 
     <h2>Thông Tin Profile Admin</h2>
 
+
+
+
     <div class="form-group">
         <label>Tên Đăng Nhập :</label>
         <input type="text" class="form-control" id="tendangnhap" name="tendangnhap" readonly
@@ -52,6 +55,48 @@ $d=mysqli_fetch_array($kq);
                elseif ($d['idRole']==2) echo "Author";
                else echo "Staff" ; ?>">
     </div>
-    <a href="index.php?key=suaprofile&idprofile=<?php echo $d['idAdmin'];?>">Chỉnh Sửa Profile</a>
+
+    <div>
+        <a class="btn btn-primary text-white fw-600" href="index.php?key=suaprofile&idprofile=<?php echo $d['idAdmin'];?>">Chỉnh Sửa Profile</a>
+        <button type="button" class="btn btn-primary text-white fw-600" data-toggle="modal" data-target="#doimatkhauadmin">Đổi Mật Khẩu</button>
+
+        <div class="modal fade" id="doimatkhauadmin" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-primary" style="text-align: center;color: blue;font-weight: bold;">Đổi Mật Khẩu</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="process.php" id="formdangnhap" name="formdangnhap">
+                            <div class="form-group">
+                                <label for="usr">Tên Đăng Nhập :</label>
+                                <input type="text" class="form-control" id="user" name="user">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Mật Khẩu :</label>
+                                <input type="password" class="form-control" id="pass" name="pass">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Mật Khẩu Mới :</label>
+                                <input type="password" class="form-control" id="passnew" name="passnew">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Nhập Lại Mật Khẩu Mới :</label>
+                                <input type="password" class="form-control" id="repassnew" name="repassnew">
+                            </div>
+                            <input type="hidden" name="id" value="<?php echo $_SESSION['username']; ?>">
+
+                            <div style="text-align: center;font-weight: bold;color: red">
+                                <button type="submit" class="btn btn-primary text-white" name="doimatkhauadmin">Đổi Mật Khẩu</button>
+                                <button style="margin: 0 30px 0 30px" type="reset" class="btn btn-outline-primary" name="huy">Reset</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <?php } ?>

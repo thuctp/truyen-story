@@ -1,10 +1,10 @@
                 <div class="row">
-                    <div class="col-lg-4">
-                        <h1 class="page-header">Danh Sach Chuong
+                    <div class="col-12">
+                        <h1 class="page-header">Danh Sách Chương
                         </h1>
                     </div>
-                <form name="form1" id="form1" action="" method="get"> 
-                    <div class="col-lg-4">
+                <form name="form1" id="form1" action="" method="get">
+                    <div class="col-lg-4 mb-5" style="margin-bottom: 48px">
                         <div class="form-group">
                             <label><h4>Chủng Loại:</h4></label>
                             <select class="form-control" style="width: 200px;" name="chungloai" id="chungloai" onchange="form1.submit()">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" style="margin-bottom: 48px">
                     <?php
                      if(isset($_GET['chungloai'])) $idCL=$_GET['chungloai'];
                        $kq2=mysqli_query($con, "select * from nncms_truyen where idCL=".$idCL);
@@ -29,7 +29,7 @@
                        $kt=0; // gán thêm biến
                      ?>
                         <div class="form-group">
-                            <label><h4>Truyen</h4></label>
+                            <label><h4>Truyện:</h4></label>
                             <select class="form-control" style="width: 200px;" name="truyen" id="truyen" onchange="form1.submit()">
                         <?php
                             while($d2=mysqli_fetch_array($kq2)){
@@ -54,6 +54,7 @@
                 
                             <tr align="center">
                                 <th>ID</th>
+                                <th>Chương Số</th>
                                 <th>Tên Chuong</th>
                                 <th>Noi Dung</th>
                                 <th>So Lan Xem</th>
@@ -67,8 +68,13 @@
                     ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $d3['idChuong'];?></td>
+                                <td><?php echo $d3['ChuongSo'];?></td>
                                 <td><?php echo $d3['TenChuong'];?></td>
-                                <td><?php echo $d3['NoiDung'];?></td>
+                                <td>
+                                    <div style="max-height: 300px; overflow-y: auto">
+                                        <?php echo $d3['NoiDung'];?>
+                                    </div>
+                                </td>
                                 <td><?php echo $d3['SoLanXem'];?></td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="process.php?chuongxoa=<?php echo $d3['idChuong'] ;?>"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="index.php?key=suachuong&chuongsua=<?php echo $d3['idChuong'] ;?>">Edit</a></td>

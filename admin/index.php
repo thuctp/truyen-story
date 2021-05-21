@@ -47,7 +47,7 @@ if(!isset($_SESSION['username'])){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Minh Thức</a>
+                <a class="navbar-brand" href="index.php">Trang Chủ</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -55,7 +55,15 @@ if(!isset($_SESSION['username'])){
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>
+                        <?php
+                        if(isset($_SESSION['username'])) {
+                            $kqName = mysqli_query($con, "select idAdmin, HoTen from nncms_admin where idAdmin={$_SESSION['username']}");
+                            $showName = mysqli_fetch_array($kqName);
+                            echo $showName['HoTen'];
+                        }
+                        ?>
+                        <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="index.php?key=profile">
@@ -91,7 +99,7 @@ if(!isset($_SESSION['username'])){
                             <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Chủng Loại<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-tags fa-fw"></i> Chủng Loại<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="index.php?key=dschungloai">Danh Sách</a>
@@ -103,7 +111,7 @@ if(!isset($_SESSION['username'])){
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Truyen<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-book fa-fw"></i> Truyen<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="index.php?key=dstruyen">Danh Sách</a>
@@ -115,7 +123,7 @@ if(!isset($_SESSION['username'])){
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Chuong<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-list fa-fw"></i> Chuong<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="index.php?key=dschuong">Danh Sách</a>

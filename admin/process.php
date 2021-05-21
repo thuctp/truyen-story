@@ -195,6 +195,44 @@ if(isset($_GET['xoanguoidung']))
     }
 }
 
+/*****************************************************
+ *	xử lý phần đổi mật khẩu
+ ******************************************************/
+if(isset($_POST['doimatkhauadmin']))
+{
+    $id=$_POST['id'];
+    $user=$_POST['user'];
+    $pass = md5($_POST['pass']);
+    $passnew = md5($_POST['passnew']);
+    $repassnew = md5($_POST['repassnew']);
+
+    $s = "Select * from nncms_admin where TenDangNhap = '$user' and MatKhau = '$pass' ";
+    $kq1 = mysqli_query($con, $s);
+    if(mysqli_num_rows($kq1) == 0)
+    {
+        echo "<script>alert('Thất Bại!, Tên Đăng Nhập hoặc Mật Khẩu Không Đúng'); location.href='index.php?key=profile'; </script>";
+    }
+    else
+    {
+        if($passnew == $repassnew){
+            $su = "update nncms_admin set MatKhau='$passnew' where idAdmin= $id";
+
+            if(mysqli_query($con, $su))
+            {
+                echo "<script>alert('Cập Nhật Mật Khẩu Thành Công! Mật Khẩu sẽ được thay đổi vào lần đăng nhập sau!');location.href='index.php?key=profile';</script>";
+            }
+            else
+            {
+                echo "<script>alert('Thất Bại!, Vui lòng kiểm tra lại');location.href='index.php?key=profile';  </script>";
+            }
+        }
+        else
+        {
+            echo "<script>alert('Thất Bại!, Mật Khẩu Mới Không Khớp'); location.href='index.php?key=profile'; </script>";
+        }
+    }
+}
+
 /***********************************************
 *  xử ly phan them truyen
 ***********************************************/
@@ -291,11 +329,12 @@ if(isset($_GET['truyenxoa']))
 if(isset($_POST['themchuong']))
 {
     $idtruyen=$_POST['truyen'] ;
+    $chuongso=$_POST['txtchuongso'] ;
     $tenchuong=$_POST['txttenchuong'];
     $noidung=$_POST['txtnoidung'];
     $ngaydang = date('Y-m-d h:i:s', time());
 
-    $ssp=" insert into nncms_chuong (idTruyen, TenChuong, NoiDung, NgayDang) values ('$idtruyen', '$tenchuong', '$noidung', '$ngaydang') ";
+    $ssp=" insert into nncms_chuong (idTruyen, ChuongSo , TenChuong, NoiDung, NgayDang) values ('$idtruyen', '$chuongso', '$tenchuong', '$noidung', '$ngaydang') ";
     if(mysqli_query($con, $ssp))
     {
         echo "<script>alert('Them thanh cong');location.href='index.php?key=dschuong';</script>";
@@ -331,11 +370,12 @@ if(isset($_POST['themtruyenchuong']))
 if(isset($_POST['suachuong']))
 {
     $idtruyen=$_POST['truyen'] ;
+    $chuongSo=$_POST['txtchuongso'];
     $tenchuong=$_POST['txttenchuong'];
     $noidung=$_POST['txtnoidung'];
     $ngaydang = date('Y-m-d h:i:s', time());
 
-    $sl= " update nncms_chuong set idTruyen='$idtruyen', TenChuong='$tenchuong', NoiDung='$noidung', NgayDang='$ngaydang' where idChuong={$_POST['idchuong']}";
+    $sl= " update nncms_chuong set idTruyen='$idtruyen', ChuongSo='$chuongSo', TenChuong='$tenchuong', NoiDung='$noidung', NgayDang='$ngaydang' where idChuong={$_POST['idchuong']}";
     if(mysqli_query($con, $sl))
     {
         echo "<script>alert('Them thanh cong');location.href='index.php?key=dschuong';</script>";
