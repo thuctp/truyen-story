@@ -1,6 +1,37 @@
 <?php
 include("../connect.php");
 
+/*****************************************************
+ *	xử lý phần đăng nhập
+ ******************************************************/
+if(isset($_POST['dangnhapadmin'])){
+    $myusername=$_POST['myusername'];
+//    $mypassword=$_POST['mypassword'];
+    $mypassword = md5($_POST['mypassword']);
+
+    $sql="SELECT * FROM nncms_admin WHERE TenDangNhap='$myusername' and MatKhau='$mypassword'";
+    $result=mysqli_query($con, $sql);
+    $count=mysqli_num_rows($result);
+
+    if($count==0){
+        echo "<script>alert('Sai ten dang nhap hoac mat khau');location.href='login.php';</script>";
+
+    }
+    else {
+        $d=mysqli_fetch_array($result);
+        session_start();
+        $_SESSION['username']= $d['idAdmin'];;
+        header("location:index.php");
+    }
+}
+
+if(isset($_GET['dangxuatadmin'])) {
+    session_start();
+    session_destroy();
+    header("location:login.php");
+}
+
+
 //thêm vao  the loai
 if(isset($_POST['themcl'])) 
 {
@@ -54,6 +85,96 @@ if(isset($_GET['idCL']))
 	{
 		echo $s3;
 	}
+}
+
+
+/*****************************************************
+ *	xử lý phần tạo mới user Admin
+ ******************************************************/
+if(isset($_POST['dangkyadmin']))
+{
+    $tendn=$_POST['tendangnhap'];
+    $pass=md5($_POST['pass']);
+    $ten=$_POST['ten'];
+    $sdt=$_POST['sdt'];
+    $email=$_POST['email'];
+    $diachi=$_POST['diachi'];
+    $ngaysinh=date('Y-m-d',strtotime( $_POST['ngaysinh']));
+    $gioitinh=$_POST['gioitinh'];
+    $ngaydangky = date('Y-m-d h:i:s', time());
+
+
+    $s=" insert into nncms_admin (TenDangNhap, MatKhau, HoTen, DienThoai, Email, DiaChi, NgaySinh, GioiTinh, NgayDangKy, idRole, DiemThuong ) values ('$tendn', '$pass', '$ten', '$sdt', '$email','$diachi', '$ngaysinh', '$gioitinh', '$ngaydangky', 2, 0)";
+    if(mysqli_query($con, $s))
+    {
+        echo "<script>alert('Đăng Ký Thành Công');location.href='index.php?key=dsadmin';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Thất Bại!, Email đã được sử dụng hoặc vui lòng kiểm trả thông tin của bạn'); location.href='index.php?key=dangkynguoidung'; </script>";
+    }
+}
+
+/*****************************************************
+ *	xử lý phần chỉnh sửa user Admin todo
+ ******************************************************/
+if(isset($_POST['chinhsuaadminprofile']))
+{
+    $idadmin=$_POST['idadmin'];
+    $tendn=$_POST['tendangnhap'];
+    $ten=$_POST['ten'];
+    $sdt=$_POST['sdt'];
+    $email=$_POST['email'];
+    $diachi=$_POST['diachi'];
+    $ngaysinh=date('Y-m-d',strtotime( $_POST['ngaysinh']));
+    $gioitinh=$_POST['gioitinh'];
+
+
+    $sl= " update nncms_admin set TenDangNhap='$tendn', HoTen='$ten', DienThoai='$sdt', Email='$email', DiaChi='$diachi', NgaySinh='$ngaysinh', GioiTinh='$gioitinh' where idAdmin=$idadmin";
+    if(mysqli_query($con, $sl))
+    {
+        echo "<script>alert('Them thanh cong');location.href='index.php?key=profile';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Thêm Thất Bại! Xin kiểm tra lại');</script>";
+    }
+}
+
+/*****************************************************
+ *	xử lý phần chỉnh sửa Vai Trò user Admin
+ ******************************************************/
+if(isset($_POST['chinhsuaroleadmin']))
+{
+    $idrole=$_POST['idroleadmin'];
+    $role=$_POST['vaitro'];
+
+
+    $sl= " update nncms_admin set idRole='$role' where idAdmin=$idrole";
+    if(mysqli_query($con, $sl))
+    {
+        echo "<script>alert('Them thanh cong');location.href='index.php?key=dsadmin';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Thêm Thất Bại! Xin kiểm tra lại');location.href='index.php?key=dsadmin';</script>";
+    }
+}
+
+/*****************************************************
+ *	xử lý phần xoa thông tin user Admin
+ ******************************************************/
+if(isset($_GET['xoaadmin']))
+{
+    $s = "delete from nncms_admin where idAdmin={$_GET['xoaadmin']}";
+    if(mysqli_query($con, $s))
+    {
+        echo "<script>alert('Xoa thanh cong');location.href='index.php?key=dsadmin';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Xoa khong thanh cong');location.href='index.php?key=dsadmin';</script>";
+    }
 }
 
 /*****************************************************
@@ -241,5 +362,4 @@ if(isset($_GET['chuongxoa']))
     }
 
 }
-
 ?>

@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['username'])){
+    header("location:login.php");
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,12 +58,13 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="index.php?key=profile">
+                                <i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="process.php?dangxuatadmin"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -119,6 +127,12 @@
                             <!-- /.nav-second-level -->
                         </li>
 
+                        <?php
+                        if(isset($_SESSION['username'])){
+                        $kq=mysqli_query($con, "select idAdmin, idRole from nncms_admin where idAdmin={$_SESSION['username']}");
+                        $checkAdmin=mysqli_fetch_array($kq);
+                        if($checkAdmin['idRole'] < 2){
+                        ?>
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -126,11 +140,16 @@
                                     <a href="index.php?key=dsadmin">Danh Sách Admin</a>
                                 </li>
                                 <li>
+                                    <a href="index.php?key=addadmin">Thêm Admin</a>
+                                </li>
+                                <li>
                                     <a href="index.php?key=dsuser">Danh Sách Người Dùng</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <?php } }?>
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -202,9 +221,21 @@
 								include("noidung/user/listadmin.php");
 								break;
 
-								case "suauser":
-								include("noidung/user/edituser.php");
+								case "addadmin":
+								include("noidung/user/addadmin.php");
 								break;
+
+                                case "profile":
+                                include("noidung/user/profile.php");
+                                break;
+
+                                case "suaprofile":
+                                include("noidung/user/editadmin.php");
+                                break;
+
+                                case "suaroleadmin":
+                                include("noidung/user/editroleadmin.php");
+                                break;
 
 							}
 						}
