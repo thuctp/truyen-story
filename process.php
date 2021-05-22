@@ -49,16 +49,22 @@ if(isset($_POST['dangky']))
 	$ngaydangky = date('Y-m-d h:i:s', time());
 	$mangaunhien=md5(rand(0,9999));
 
-	 $s=" insert into nncms_nguoidung (MatKhau, Email, HoTen, DienThoai, DiaChi, NgaySinh, GioiTinh, NgayDangKy, idNhom, KichHoat, MaNgauNhien, DiemSMS ) values ('$pass', '$email', '$ten', '$sdt','$diachi', '$ngaysinh', '$gioitinh', '$ngaydangky', 0, 1, '$mangaunhien', 0)";
-	if(mysqli_query($con, $s))
-	{
-		// header("location:index.php"); die();
-		include('gmail.php');
-	}
-	else
-	{
-		echo "<script>alert('Thất Bại!, Email đã được sử dụng hoặc vui lòng kiểm trả thông tin của bạn'); location.href='index.php?key=dangkynguoidung'; </script>";
-	}
+    $sEmail = "Select Email from nncms_nguoidung where Email = '$email'";
+    $kqEmail = mysqli_query($con, $sEmail);
+    if(mysqli_num_rows($kqEmail) == 0){
+        $s=" insert into nncms_nguoidung (MatKhau, Email, HoTen, DienThoai, DiaChi, NgaySinh, GioiTinh, NgayDangKy, idNhom, KichHoat, MaNgauNhien, DiemSMS ) values ('$pass', '$email', '$ten', '$sdt','$diachi', '$ngaysinh', '$gioitinh', '$ngaydangky', 0, 1, '$mangaunhien', 0)";
+        if(mysqli_query($con, $s))
+        {
+            echo "<script>alert('Dang Ky thanh cong'); location.href='index.php'; </script>";
+//		include('gmail.php');
+        }
+        else
+        {
+            echo "<script>alert('Thất Bại!, Email đã được sử dụng hoặc vui lòng kiểm trả thông tin của bạn'); location.href='index.php?key=dangkynguoidung'; </script>";
+        }
+    } else {
+        echo "<script>alert('Email Da duoc dang ky! vui long kiem tra lai'); location.href='index.php?key=dangkynguoidung'; </script>";
+    }
 }
 
 /*****************************************************

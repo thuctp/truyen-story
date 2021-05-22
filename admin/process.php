@@ -103,20 +103,27 @@ if(isset($_POST['dangkyadmin']))
     $gioitinh=$_POST['gioitinh'];
     $ngaydangky = date('Y-m-d h:i:s', time());
 
+    $sEmail = "Select Email from nncms_admin where TenDangNhap = '$tendn' or Email = '$email'";
+    $kqEmail = mysqli_query($con, $sEmail);
+    if(mysqli_num_rows($kqEmail) == 0){
+        $s=" insert into nncms_admin (TenDangNhap, MatKhau, HoTen, DienThoai, Email, DiaChi, NgaySinh, GioiTinh, NgayDangKy, idRole, DiemThuong ) values ('$tendn', '$pass', '$ten', '$sdt', '$email','$diachi', '$ngaysinh', '$gioitinh', '$ngaydangky', 2, 0)";
+        if(mysqli_query($con, $s))
+        {
+            echo "<script>alert('Đăng Ký Thành Công');location.href='index.php?key=dsadmin';</script>";
+        }
+        else
+        {
+            echo "<script>alert('Thất Bại!, Email đã được sử dụng hoặc vui lòng kiểm trả thông tin của bạn'); location.href='index.php?key=addadmin'; </script>";
+        }
+    } else{
+        echo "<script>alert('Ten Dang Nhap đã được sử dụng hoặc vui lòng kiểm trả thông tin của bạn'); location.href='index.php?key=addadmin'; </script>";
+    }
 
-    $s=" insert into nncms_admin (TenDangNhap, MatKhau, HoTen, DienThoai, Email, DiaChi, NgaySinh, GioiTinh, NgayDangKy, idRole, DiemThuong ) values ('$tendn', '$pass', '$ten', '$sdt', '$email','$diachi', '$ngaysinh', '$gioitinh', '$ngaydangky', 2, 0)";
-    if(mysqli_query($con, $s))
-    {
-        echo "<script>alert('Đăng Ký Thành Công');location.href='index.php?key=dsadmin';</script>";
-    }
-    else
-    {
-        echo "<script>alert('Thất Bại!, Email đã được sử dụng hoặc vui lòng kiểm trả thông tin của bạn'); location.href='index.php?key=dangkynguoidung'; </script>";
-    }
+
 }
 
 /*****************************************************
- *	xử lý phần chỉnh sửa user Admin todo
+ *	xử lý phần chỉnh sửa user Admin
  ******************************************************/
 if(isset($_POST['chinhsuaadminprofile']))
 {
@@ -129,15 +136,20 @@ if(isset($_POST['chinhsuaadminprofile']))
     $ngaysinh=date('Y-m-d',strtotime( $_POST['ngaysinh']));
     $gioitinh=$_POST['gioitinh'];
 
-
-    $sl= " update nncms_admin set TenDangNhap='$tendn', HoTen='$ten', DienThoai='$sdt', Email='$email', DiaChi='$diachi', NgaySinh='$ngaysinh', GioiTinh='$gioitinh' where idAdmin=$idadmin";
-    if(mysqli_query($con, $sl))
-    {
-        echo "<script>alert('Them thanh cong');location.href='index.php?key=profile';</script>";
-    }
-    else
-    {
-        echo "<script>alert('Thêm Thất Bại! Xin kiểm tra lại');</script>";
+    $sEmail2 = "Select Email from nncms_admin where TenDangNhap = '$tendn' or Email = '$email'";
+    $kqEmail2 = mysqli_query($con, $sEmail2);
+    if(mysqli_num_rows($kqEmail2) == 0){
+        $sl= " update nncms_admin set TenDangNhap='$tendn', HoTen='$ten', DienThoai='$sdt', Email='$email', DiaChi='$diachi', NgaySinh='$ngaysinh', GioiTinh='$gioitinh' where idAdmin=$idadmin";
+        if(mysqli_query($con, $sl))
+        {
+            echo "<script>alert('Them thanh cong');location.href='index.php?key=profile';</script>";
+        }
+        else
+        {
+            echo "<script>alert('Thêm Thất Bại! Xin kiểm tra lại');location.href='index.php?key=profile';</script>";
+        }
+    } else{
+        echo "<script>alert('Ten Dang Nhap đã được sử dụng hoặc vui lòng kiểm trả thông tin của bạn'); location.href='index.php?key=profile'; </script>";
     }
 }
 

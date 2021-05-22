@@ -25,7 +25,6 @@ session_start();
 <!-- phan menu cua website -->
 <?php include('noidung/menu.php') ;?>
 <!-- ket thuc phan menu cua website -->
-
 <div class="container pt-4">
 <!--phan noi dung -->
 	<div class="d-lg-flex">
