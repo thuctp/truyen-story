@@ -215,3 +215,109 @@
 
 </div>
 <!-- kết thúc sản phẩm giá tuyowng đương -->
+
+<!--phần bình luận của đọc giả-->
+<div class="mb-5 bg-white p-2">
+    <h4 class="title-loai">Bình Luận Bài Viết:</h4>
+
+
+
+    <div class="list-comment">
+        <ul>
+            <?php
+            $slComment="select * from nncms_comments where idTruyen = $idGetTruyen order by idCmt DESC";
+            $kqListComment=mysqli_query($con, $slComment);
+            $checkDATAListComment=mysqli_num_rows($kqListComment);
+
+            if($checkDATAListComment > 0){
+            while ($loopComment=mysqli_fetch_array($kqListComment)) {
+            ?>
+            <li>
+                <?php
+                $slGetUser="select idNguoiDung, HoTen, GioiTinh from nncms_nguoidung where idNguoiDung = {$loopComment['idNguoiDung']}";
+                $kqGetUser=mysqli_query($con, $slGetUser);
+                $name=mysqli_fetch_array($kqGetUser);
+                ?>
+                <div><span><?php echo $name['GioiTinh'] ?></span>-<?php echo $name['HoTen'] ?></div>
+                <div><?php echo $loopComment['NoiDung'] ?></div>
+                <div>reply</div>
+
+                <div class="list-comment-reply" style="padding-left: 40px">
+                    <?php
+                    $slRepComment="select * from nncms_comments_rep where idCmt = {$loopComment['idCmt']}";
+                    $kqListCommentRep=mysqli_query($con, $slRepComment);
+                    while ($loopCommentRep=mysqli_fetch_array($kqListCommentRep)) {
+                        ?>
+                        <div>
+                            <?php
+                            $slGetUserRep="select idNguoiDung, HoTen, GioiTinh from nncms_nguoidung where idNguoiDung = {$loopCommentRep['idNguoiDung']}";
+                            $kqGetUserRep=mysqli_query($con, $slGetUserRep);
+                            $nameRep=mysqli_fetch_array($kqGetUserRep);
+                            ?>
+                            <div><span><?php echo $nameRep['GioiTinh'] ?></span>-<?php echo $nameRep['HoTen'] ?></div>
+                            <div><?php echo $loopCommentRep['NoiDung'] ?></div>
+                        </div>
+                    <?php } ?>
+                </div>
+
+                <div class="write-reply-comment" style="padding-left: 40px">
+                    <?php
+                    if(isset($_SESSION['nguoidung'])){
+                        $kqkt=mysqli_query($con, "select idNguoiDung, HoTen from nncms_nguoidung where idNguoiDung={$_SESSION['nguoidung']}");
+                        $getUser=mysqli_fetch_array($kqkt);
+                        ?>
+                        <form method="post" action="process.php" id="formRepComment" name="formRepComment">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="txtcommentRep" name="txtcommentRep" placeholder="Write a public reply... ">
+                            </div>
+                            <input type="hidden" id="textIdCmtRep" name="textIdCmtRep" value="<?php echo $loopComment['idCmt']; ?>">
+                            <input type="hidden" id="textIdTruyenRep" name="textIdTruyenRep" value="<?php echo $idGetTruyen; ?>">
+                            <input type="hidden" id="textIdNguoiDungRep" name="textIdNguoiDungRep"
+                                   value="<?php echo $_SESSION['nguoidung']; ?>">
+                            <div style="text-align: center;font-weight: bold;color: red">
+                                <button type="submit" class="btn btn-default" name="replyComment">Bình Luận</button>
+                                <button type="reset" class="btn btn-default" name="huy">Reset</button>
+                            </div>
+                        </form>
+                    <?php } ?>
+                </div>
+
+            </li>
+            <?php }
+            } else{ ?>
+                <li class="list-group-item py-4">
+                    <h6>Chưa có Binh luan nao nào cho truyện này!</h6>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+
+
+
+    <div class="write-comment">
+        <?php
+        if(isset($_SESSION['nguoidung'])){
+        $kqkt=mysqli_query($con, "select idNguoiDung, HoTen from nncms_nguoidung where idNguoiDung={$_SESSION['nguoidung']}");
+        $getUser=mysqli_fetch_array($kqkt);
+        ?>
+        <form method="post" action="process.php" id="formComment" name="formComment">
+            <div class="form-group">
+                <label>Nhập vào bình luận:</label>
+                <input type="text" class="form-control" id="txtcomment" name="txtcomment">
+            </div>
+            <input type="hidden" id="textIdTruyen" name="textIdTruyen" value="<?php echo $idGetTruyen; ?>">
+            <input type="hidden" id="textIdNguoiDung" name="textIdNguoiDung"
+                   value="<?php echo $_SESSION['nguoidung']; ?>">
+            <div style="text-align: center;font-weight: bold;color: red">
+                <button type="submit" class="btn btn-default" name="comment">Bình Luận</button>
+                <button type="reset" class="btn btn-default" name="huy">Reset</button>
+            </div>
+        </form>
+        <?php } else{ ?>
+            <div class="p-4">
+                <h3>dang nhap vao roi moi dc comment nhe may</h3>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+<!--end code phần bình luận của đọc giả-->

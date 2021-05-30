@@ -132,4 +132,40 @@ if(isset($_POST['doimatkhau']))
 	}
 }
 
+if(isset($_POST['comment'])) {
+    $noidung=$_POST['txtcomment'];
+    $idTruyen=$_POST['textIdTruyen'];
+    $idUser=$_POST['textIdNguoiDung'];
+    $ngaydang = date('Y-m-d h:i:s', time());
+
+    $ssp=" insert into nncms_comments (idTruyen, idNguoiDung, NoiDung) values ('$idTruyen', '$idUser' ,'$noidung') ";
+    if(mysqli_query($con, $ssp))
+    {
+        echo "<script>alert('Comment thanh cong');location.href='index.php?key=chitiettruyen&idtruyen=$idTruyen';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Comment Thất Bại! Xin kiểm tra lại');location.href='index.php?key=key=chitiettruyen&idtruyen=$idTruyen';</script>";
+    }
+}
+
+if(isset($_POST['replyComment'])) {
+    $noidung=$_POST['txtcommentRep'];
+    $idComment=$_POST['textIdCmtRep'];
+    $idTruyen=$_POST['textIdTruyenRep'];
+    $idUser=$_POST['textIdNguoiDungRep'];
+    $ngaydang = date('Y-m-d h:i:s', time());
+
+    $ssp=" insert into nncms_comments_rep (idCmt, idNguoiDung, NoiDung) values ('$idComment', '$idUser' ,'$noidung') ";
+    if(mysqli_query($con, $ssp))
+    {
+        echo "<script>alert('Comment thanh cong');location.href='index.php?key=chitiettruyen&idtruyen=$idTruyen';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Comment Thất Bại! Xin kiểm tra lại');location.href='index.php?key=key=chitiettruyen&idtruyen=$idTruyen';</script>";
+    }
+}
+
+
 ?>
