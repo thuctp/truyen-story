@@ -1,11 +1,4 @@
 <?php
-if(isset($_SESSION['username'])) {
-    $idrole = $_SESSION['username'];
-    $getIdAdmin = mysqli_query($con, "select * from nncms_admin where idAdmin=$idrole");
-    $checkRole = mysqli_fetch_array($getIdAdmin);
-    if ($checkRole['idRole'] < 2) { ?>
-
-<?php
 if(isset($_GET['idprofile'])){
 $kq=mysqli_query($con, "select * from nncms_admin where idAdmin={$_GET['idprofile']} ");
 $d=mysqli_fetch_array($kq);
@@ -17,11 +10,6 @@ $d=mysqli_fetch_array($kq);
 
     <form method="post" action="process.php" id="form1" name="form1">
         <div class="form-group">
-            <label>Tên Đăng Nhập :</label>
-            <input type="text" class="form-control" id="tendangnhap" name="tendangnhap" required
-                   value="<?php echo $d['TenDangNhap'] ;?>">
-        </div>
-        <div class="form-group">
             <label>Họ Tên :</label>
             <input type="text" class="form-control" id="ten" name="ten" required
                    value="<?php echo $d['HoTen'] ;?>">
@@ -30,11 +18,6 @@ $d=mysqli_fetch_array($kq);
             <label>Số Điện Thoại :</label>
             <input type="number" class="form-control" id="sdt" name="sdt" required
                    value="<?php echo $d['DienThoai'] ;?>">
-        </div>
-        <div class="form-group">
-            <label>Email :</label>
-            <input type="email" class="form-control" id="email" name="email" required
-                   value="<?php echo $d['Email'] ;?>">
         </div>
         <div class="form-group">
             <label>Địa Chỉ :</label>
@@ -62,9 +45,3 @@ $d=mysqli_fetch_array($kq);
     </form>
 </div>
 <?php } ?>
-
-<?php } else {
-    echo "<script>location.href='index.php';</script>";
-}
-}
-?>

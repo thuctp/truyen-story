@@ -128,28 +128,20 @@ if(isset($_POST['dangkyadmin']))
 if(isset($_POST['chinhsuaadminprofile']))
 {
     $idadmin=$_POST['idadmin'];
-    $tendn=$_POST['tendangnhap'];
     $ten=$_POST['ten'];
     $sdt=$_POST['sdt'];
-    $email=$_POST['email'];
     $diachi=$_POST['diachi'];
     $ngaysinh=date('Y-m-d',strtotime( $_POST['ngaysinh']));
     $gioitinh=$_POST['gioitinh'];
 
-    $sEmail2 = "Select Email from nncms_admin where TenDangNhap = '$tendn' or Email = '$email'";
-    $kqEmail2 = mysqli_query($con, $sEmail2);
-    if(mysqli_num_rows($kqEmail2) == 0){
-        $sl= " update nncms_admin set TenDangNhap='$tendn', HoTen='$ten', DienThoai='$sdt', Email='$email', DiaChi='$diachi', NgaySinh='$ngaysinh', GioiTinh='$gioitinh' where idAdmin=$idadmin";
-        if(mysqli_query($con, $sl))
-        {
-            echo "<script>alert('Them thanh cong');location.href='index.php?key=profile';</script>";
-        }
-        else
-        {
-            echo "<script>alert('Thêm Thất Bại! Xin kiểm tra lại');location.href='index.php?key=profile';</script>";
-        }
-    } else{
-        echo "<script>alert('Ten Dang Nhap đã được sử dụng hoặc vui lòng kiểm trả thông tin của bạn'); location.href='index.php?key=profile'; </script>";
+    $sl= " update nncms_admin set HoTen='$ten', DienThoai='$sdt', DiaChi='$diachi', NgaySinh='$ngaysinh', GioiTinh='$gioitinh' where idAdmin=$idadmin";
+    if(mysqli_query($con, $sl))
+    {
+        echo "<script>alert('Them thanh cong');location.href='index.php?key=profile';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Thêm Thất Bại! Xin kiểm tra lại');location.href='index.php?key=profile';</script>";
     }
 }
 

@@ -82,7 +82,7 @@
 
 <!-- list toàn chuong -->
 <div class="mb-5 bg-white p-2">
-    <h4 class="title-loai">Danh Sách 10 Chương Mới Đăng</h4>
+    <h4 class="title-loai">Danh Sách Toàn Bộ Chương</h4>
 
     <ul class="list-group">
         <?php
