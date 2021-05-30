@@ -1,3 +1,10 @@
+<?php
+if(isset($_SESSION['username'])) {
+$idrole = $_SESSION['username'];
+$getIdAdmin = mysqli_query($con, "select * from nncms_admin where idAdmin=$idrole");
+$checkRole = mysqli_fetch_array($getIdAdmin);
+if ($checkRole['idRole'] < 2) { ?>
+
 <div class="bg-white p-4">
 
     <h2>Đăng Ký Thông Tin Admin</h2>
@@ -45,3 +52,8 @@
         <input type="reset" name="huy" value="Reset">
     </form>
 </div>
+<?php } else {
+    echo "<script>location.href='index.php';</script>";
+}
+}
+?>

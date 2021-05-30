@@ -20,7 +20,7 @@ if(isset($_POST['dangnhapadmin'])){
     else {
         $d=mysqli_fetch_array($result);
         session_start();
-        $_SESSION['username']= $d['idAdmin'];;
+        $_SESSION['username']= $d['idAdmin'];
         header("location:index.php");
     }
 }

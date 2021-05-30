@@ -1,4 +1,11 @@
 <?php
+if(isset($_SESSION['username'])) {
+    $idrole = $_SESSION['username'];
+    $getIdAdmin = mysqli_query($con, "select * from nncms_admin where idAdmin=$idrole");
+    $checkRole = mysqli_fetch_array($getIdAdmin);
+    if ($checkRole['idRole'] < 2) { ?>
+
+<?php
 if(isset($_GET['roleadmin'])){
 $kq=mysqli_query($con, "select * from nncms_admin where idAdmin={$_GET['roleadmin']} ");
 $d=mysqli_fetch_array($kq);
@@ -56,3 +63,9 @@ $d=mysqli_fetch_array($kq);
     </form>
 </div>
 <?php } ?>
+
+    <?php } else {
+        echo "<script>location.href='index.php';</script>";
+    }
+}
+?>
