@@ -130,4 +130,29 @@ ul.c-ul-type-none {
     .box-select-pagination-top ul.dropdown-menu li.active-select {
       background-color: yellow; }
 
+.wrap-comment-rep-list {
+  padding-left: 66px; }
+
+.comment-list-items {
+  display: flex;
+  position: relative;
+  margin-bottom: 24px; }
+  .comment-list-items .box-avatar {
+    display: inline-block;
+    margin-right: 16px; }
+    .comment-list-items .box-avatar img {
+      width: 50px;
+      border-radius: 50%; }
+  .comment-list-items .box-content {
+    padding: 4px 12px;
+    background-color: #fff;
+    border-radius: 16px; }
+    .comment-list-items .box-content .nameUser {
+      margin-bottom: 0; }
+  .comment-list-items .button-reply {
+    position: absolute;
+    left: 78px;
+    top: 100%;
+    font-size: 14px; }
+
 /*# sourceMappingURL=main.css.map */

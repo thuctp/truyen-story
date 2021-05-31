@@ -162,3 +162,35 @@ ul.c-ul-type-none{
   }
 }
 
+//comment
+.wrap-comment-rep-list{
+  padding-left: 66px;
+}
+
+.comment-list-items{
+  display: flex;
+  position: relative;
+  margin-bottom: 24px;
+  .box-avatar{
+    display: inline-block;
+    margin-right: 16px;
+    img{
+      width: 50px;
+      border-radius: 50%;
+    }
+  }
+  .box-content{
+    padding: 4px 12px;
+    background-color: #fff;
+    border-radius: 16px;
+    .nameUser{
+      margin-bottom: 0;
+    }
+  }
+  .button-reply{
+    position: absolute;
+    left: 78px;
+    top: 100%;
+    font-size: 14px;
+  }
+}

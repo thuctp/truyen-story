@@ -163,9 +163,21 @@ if(isset($_POST['replyComment'])) {
     }
     else
     {
-        echo "<script>alert('Comment Thất Bại! Xin kiểm tra lại');location.href='index.php?key=key=chitiettruyen&idtruyen=$idTruyen';</script>";
+        echo "<script>alert('Comment Thất Bại! Xin kiểm tra lại');location.href='index.php?key=chitiettruyen&idtruyen=$idTruyen';</script>";
     }
 }
 
+//if(isset($_GET['xoaComment'])) {
+//    $s = "delete nncms_comments, nncms_comments_rep from nncms_comments, nncms_comments_rep where nncms_comments.idCmt = nncms_comments_rep.idCmt and nncms_comments.idCmt = {$_GET['xoaComment']}";
+////    $s="delete from nncms_truyen where idTruyen={$_GET['truyenxoa']}";
+//    if(mysqli_query($con, $s))
+//    {
+//        header("location:index.php?key=chitiettruyen&idtruyen={$_GET['xoaComment']}");
+//    }
+//    else
+//    {
+//        echo $s;
+//    }
+//}
 
 ?>

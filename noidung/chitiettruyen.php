@@ -217,7 +217,7 @@
 <!-- kết thúc sản phẩm giá tuyowng đương -->
 
 <!--phần bình luận của đọc giả-->
-<div class="mb-5 bg-white p-2">
+<div class="mb-5 p-2">
     <h4 class="title-loai">Bình Luận Bài Viết:</h4>
 
 
@@ -232,35 +232,60 @@
             if($checkDATAListComment > 0){
             while ($loopComment=mysqli_fetch_array($kqListComment)) {
             ?>
-            <li>
+            <li class="wrap-comment-list">
                 <?php
                 $slGetUser="select idNguoiDung, HoTen, GioiTinh from nncms_nguoidung where idNguoiDung = {$loopComment['idNguoiDung']}";
                 $kqGetUser=mysqli_query($con, $slGetUser);
                 $name=mysqli_fetch_array($kqGetUser);
                 ?>
-                <div><span><?php echo $name['GioiTinh'] ?></span>-<?php echo $name['HoTen'] ?></div>
-                <div><?php echo $loopComment['NoiDung'] ?></div>
-                <div>reply</div>
+                <div class="comment-list-items">
+                    <span class="box-avatar">
+                        <?php if($name['GioiTinh'] == 1){ ?>
+                            <img src="upload/sanpham/AvatarNu.png" alt="avatar">
+                        <?php } else{ ?>
+                            <img src="upload/sanpham/AvatarNam.png" alt="avatar">
+                        <?php } ?>
+                    </span>
+                    <div class="box-content">
+                        <h6 class="nameUser"><?php echo $name['HoTen'] ?></h6>
+                        <p><?php echo $loopComment['NoiDung'] ?></p>
+                    </div>
+                    <div class="button-reply">reply</div>
+                </div>
 
-                <div class="list-comment-reply" style="padding-left: 40px">
+
+                <div class="list-comment-reply">
                     <?php
                     $slRepComment="select * from nncms_comments_rep where idCmt = {$loopComment['idCmt']}";
                     $kqListCommentRep=mysqli_query($con, $slRepComment);
                     while ($loopCommentRep=mysqli_fetch_array($kqListCommentRep)) {
                         ?>
-                        <div>
+                        <div class="wrap-comment-rep-list">
                             <?php
                             $slGetUserRep="select idNguoiDung, HoTen, GioiTinh from nncms_nguoidung where idNguoiDung = {$loopCommentRep['idNguoiDung']}";
                             $kqGetUserRep=mysqli_query($con, $slGetUserRep);
                             $nameRep=mysqli_fetch_array($kqGetUserRep);
                             ?>
-                            <div><span><?php echo $nameRep['GioiTinh'] ?></span>-<?php echo $nameRep['HoTen'] ?></div>
-                            <div><?php echo $loopCommentRep['NoiDung'] ?></div>
+
+                            <div class="comment-list-items">
+                                <span class="box-avatar">
+                                    <?php if($nameRep['GioiTinh'] == 1){ ?>
+                                        <img src="upload/sanpham/AvatarNu.png" width="40px" alt="avatar">
+                                    <?php } else{ ?>
+                                        <img src="upload/sanpham/AvatarNam.png" width="40px" alt="avatar">
+                                    <?php } ?>
+                                </span>
+                                <div class="box-content">
+                                    <h6 class="nameUser"><?php echo $nameRep['HoTen'] ?></h6>
+                                    <p><?php echo $loopCommentRep['NoiDung'] ?></p>
+                                </div>
+                                <div class="button-reply">reply</div>
+                            </div>
                         </div>
                     <?php } ?>
                 </div>
 
-                <div class="write-reply-comment" style="padding-left: 40px">
+                <div class="write-reply-comment" style="padding-left: 66px">
                     <?php
                     if(isset($_SESSION['nguoidung'])){
                         $kqkt=mysqli_query($con, "select idNguoiDung, HoTen from nncms_nguoidung where idNguoiDung={$_SESSION['nguoidung']}");
