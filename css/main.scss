@@ -170,7 +170,6 @@ ul.c-ul-type-none{
 .comment-list-items{
   display: flex;
   position: relative;
-  margin-bottom: 24px;
   .box-avatar{
     display: inline-block;
     margin-right: 16px;
@@ -187,10 +186,51 @@ ul.c-ul-type-none{
       margin-bottom: 0;
     }
   }
-  .button-reply{
-    position: absolute;
-    left: 78px;
-    top: 100%;
-    font-size: 14px;
+}
+
+.btn-reply{
+  padding: 0;
+  font-size: 14px;
+  margin-left: 78px;
+}
+
+.list-comment-reply{
+  margin-top: 16px;
+}
+
+.write-reply-comment{
+  padding-left: 66px;
+  margin-top: 8px;
+}
+
+.wrap-comment-rep-list .comment-list-items{
+  margin-bottom: 16px;
+}
+
+.form-binhluan{
+  display: flex;
+  .btn-binhluan{
+    white-space: nowrap;
+    background-color: rgb(96, 120, 169);
+    border: 1px solid rgb(41, 65, 124);
+    font-weight: 600;
+    color: white;
+    margin-left: 8px;
   }
+}
+
+.btn-reply{
+  ~ .write-reply-comment{
+    display: none;
+  }
+  &.active{
+    ~ .write-reply-comment{
+      display: block;
+    }
+  }
+}
+
+.box-noti-mess{
+  border: 1px dashed red;
+  padding: 20px 24px 12px 24px;
 }

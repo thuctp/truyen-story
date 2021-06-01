@@ -138,7 +138,7 @@ if(isset($_POST['comment'])) {
     $idUser=$_POST['textIdNguoiDung'];
     $ngaydang = date('Y-m-d h:i:s', time());
 
-    $ssp=" insert into nncms_comments (idTruyen, idNguoiDung, NoiDung) values ('$idTruyen', '$idUser' ,'$noidung') ";
+    $ssp=" insert into nncms_comments (idTruyen, idNguoiDung, NoiDung, NgayDang) values ('$idTruyen', '$idUser' ,'$noidung' ,'$ngaydang') ";
     if(mysqli_query($con, $ssp))
     {
         echo "<script>alert('Comment thanh cong');location.href='index.php?key=chitiettruyen&idtruyen=$idTruyen';</script>";
