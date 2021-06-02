@@ -406,4 +406,52 @@ if(isset($_GET['chuongxoa']))
     }
 
 }
+
+//duyệt comment
+if(isset($_GET['duyetCmt']))
+{
+    $sl= " update nncms_comments set TrangThai='0' where idCmt={$_GET['duyetCmt']}";
+    if(mysqli_query($con, $sl))
+    {
+        echo "<script>alert('Duyệt Thành Công');location.href='index.php?key=dscomments';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Duyệt Thất Bại');location.href='index.php?key=dscomments';</script>";
+    }
+
+}
+
+//Duyệt comment reply
+if(isset($_GET['duyetCmtRepTongQuat']))
+{
+    $sl= " update nncms_comments_rep set TrangThai='0' where idCmtRep={$_GET['duyetCmtRepTongQuat']}";
+    if(mysqli_query($con, $sl))
+    {
+        echo "<script>alert('Duyệt Thành Công');location.href='index.php?key=dscmttongquat';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Duyệt Thất Bại');location.href='index.php?key=dscmttongquat';</script>";
+    }
+
+}
+
+//Duyệt comment reply
+if(isset($_GET['duyetCmtRep']))
+{
+    $sl= " update nncms_comments_rep set TrangThai='0' where idCmtRep={$_GET['duyetCmtRep']}";
+    if(mysqli_query($con, $sl))
+    {
+        echo "<script>alert('Duyệt Thành Công');location.href='index.php?key=listCmtRep&idCmtRep={$_GET['setidCmt']}';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Duyệt Thất Bại');location.href='index.php?key=listCmtRep&idCmtRep={$_GET['setidCmt']}';</script>";
+    }
+
+}
 ?>
+
+
+

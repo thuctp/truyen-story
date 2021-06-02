@@ -1,0 +1,121 @@
+.box-flex-table{
+  display: flex;
+  margin-top: -1px;
+  &.header{
+    font-weight: 600;
+    margin-top: 0;
+  }
+  .stt-0{
+    border: 1px solid #ddd;
+    padding: 8px 4px;
+    min-width: 120px;
+  }
+  .stt-1{
+    width: 18%;
+
+  }
+  .stt-2{
+    width: 15%;
+  }
+  .stt-3{
+    width: 18%;
+  }
+  .stt-4{
+    width: 15%;
+    text-align: center;
+  }
+  .stt-5{
+    width: 12%;
+    text-align: center;
+  }
+  .stt-6{
+    width: 12%;
+    text-align: center;
+  }
+  .stt-7{
+    width: 10%;
+    text-align: center;
+  }
+}
+
+.box-flex-table-replay{
+  display: flex;
+  margin-top: -1px;
+  &.header{
+    font-weight: 600;
+    margin-top: 0;
+  }
+  .sttrep-0{
+    border: 1px solid #ddd;
+    padding: 8px 4px;
+    min-width: 120px;
+  }
+  .sttrep-1{
+    width: 16%;
+
+  }
+  .sttrep-2{
+    width: 27%;
+  }
+  .sttrep-3{
+    width: 15%;
+  }
+  .sttrep-4{
+    width: 16%;
+    text-align: center;
+  }
+  .sttrep-5{
+    width: 14%;
+    text-align: center;
+  }
+  .sttrep-6{
+    width: 14%;
+    text-align: center;
+  }
+}
+
+.c-panel-title{
+  position: relative;
+  .icon-dropdown-table{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid #337ab7;
+    background-color: #fff;
+    color: #337ab7;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    text-decoration: none!important;
+    .icon-toggle-plus{
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      &:before, &:after{
+        position: absolute;
+        content: "";
+        width: 20px;
+        height: 2px;
+        background-color: #337ab7;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all .4s ease-in-out;
+      }
+    }
+    &.collapsed .icon-toggle-plus:after{
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+}
+
+.warring-status{
+  background-color: red;
+  color: white;
+}

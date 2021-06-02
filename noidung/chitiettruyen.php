@@ -225,7 +225,7 @@
     <div class="list-comment">
         <div>
             <?php
-            $slComment="select * from nncms_comments where idTruyen = $idGetTruyen and TrangThai=1 order by idCmt DESC";
+            $slComment="select * from nncms_comments where idTruyen = $idGetTruyen and TrangThai=0 order by idCmt DESC";
             $kqListComment=mysqli_query($con, $slComment);
             $checkDATAListComment=mysqli_num_rows($kqListComment);
 
@@ -273,7 +273,7 @@
                 </div>
                 <div class="list-comment-reply">
                     <?php
-                    $slRepComment="select * from nncms_comments_rep where idCmt = {$loopComment['idCmt']} and TrangThai = 1";
+                    $slRepComment="select * from nncms_comments_rep where idCmt = {$loopComment['idCmt']} and TrangThai = 0";
                     $kqListCommentRep=mysqli_query($con, $slRepComment);
                     while ($loopCommentRep=mysqli_fetch_array($kqListCommentRep)) {
                         ?>

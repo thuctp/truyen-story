@@ -23,6 +23,7 @@ if(!isset($_SESSION['username'])){
 
     <!-- Custom CSS -->
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="dist/css/admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -157,6 +158,19 @@ if(!isset($_SESSION['username'])){
                             <!-- /.nav-second-level -->
                         </li>
                         <?php } }?>
+                        <li>
+                            <a href="#"><i class="fa fa-tags fa-fw"></i> Bình Luận<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="index.php?key=dscmttongquat">Tất Cả Bình Luận</a>
+                                </li>
+                                <li>
+                                    <a href="index.php?key=dscomments">Danh Sách Mới Bình Luận</a>
+                                </li>
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
 
                     </ul>
                 </div>
@@ -218,6 +232,18 @@ if(!isset($_SESSION['username'])){
 
                                 case "suachuong":
                                 include("noidung/chuong/editchuong.php");
+                                break;
+
+                                //bình Luận
+                                case "dscmttongquat":
+                                include("noidung/comment/detailcomment.php");
+                                break;
+                                case "dscomments":
+                                include("noidung/comment/listcomments.php");
+                                break;
+
+                                case "listCmtRep":
+                                include("noidung/comment/detailcommentBackup.php");
                                 break;
 
 								//taif khoang user
