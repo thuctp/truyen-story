@@ -223,7 +223,7 @@
 
 
     <div class="list-comment">
-        <div>
+        <div id="id-show-hide-cmt">
             <?php
             $slComment="select * from nncms_comments where idTruyen = $idGetTruyen and TrangThai=0 order by idCmt DESC";
             $kqListComment=mysqli_query($con, $slComment);
@@ -232,7 +232,7 @@
             if($checkDATAListComment > 0){
             while ($loopComment=mysqli_fetch_array($kqListComment)) {
             ?>
-            <div class="wrap-comment-list">
+            <div class="wrap-comment-list items-show-hide-cmt">
                 <?php
                 $slGetUser="select idNguoiDung, HoTen, GioiTinh from nncms_nguoidung where idNguoiDung = {$loopComment['idNguoiDung']}";
                 $kqGetUser=mysqli_query($con, $slGetUser);
@@ -309,10 +309,12 @@
                 </div>
             <?php } ?>
         </div>
+        <div id="loadMore">Load more</div>
+        <div id="showLess">Show less</div>
     </div>
 
 
-
+<!--    form nhap comment-->
     <div class="write-comment">
         <?php
         if(isset($_SESSION['nguoidung'])){

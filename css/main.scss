@@ -238,3 +238,13 @@ ul.c-ul-type-none{
   border: 1px dashed red;
   padding: 20px 24px 12px 24px;
 }
+
+#id-show-hide-cmt .items-show-hide-cmt{
+  display:none;
+}
+
+#showLess {
+  color:red;
+  cursor:pointer;
+  display:none;
+}
