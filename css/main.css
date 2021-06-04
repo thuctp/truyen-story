@@ -138,21 +138,24 @@ ul.c-ul-type-none {
   position: relative; }
   .comment-list-items .box-avatar {
     display: inline-block;
-    margin-right: 16px; }
+    margin-right: 12px; }
     .comment-list-items .box-avatar img {
-      width: 50px;
+      width: 45px;
       border-radius: 50%; }
   .comment-list-items .box-content {
     padding: 4px 12px;
     background-color: #fff;
     border-radius: 16px; }
     .comment-list-items .box-content .nameUser {
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      font-size: 14px; }
+    .comment-list-items .box-content .content-cmt {
+      font-size: 14px; }
 
 .btn-reply {
   padding: 0;
   font-size: 14px;
-  margin-left: 78px; }
+  margin-left: 68px; }
 
 .list-comment-reply {
   margin-top: 16px; }

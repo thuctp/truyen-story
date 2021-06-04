@@ -172,9 +172,9 @@ ul.c-ul-type-none{
   position: relative;
   .box-avatar{
     display: inline-block;
-    margin-right: 16px;
+    margin-right: 12px;
     img{
-      width: 50px;
+      width: 45px;
       border-radius: 50%;
     }
   }
@@ -184,6 +184,10 @@ ul.c-ul-type-none{
     border-radius: 16px;
     .nameUser{
       margin-bottom: 0;
+      font-size: 14px;
+    }
+    .content-cmt{
+      font-size: 14px;
     }
   }
 }
@@ -191,7 +195,7 @@ ul.c-ul-type-none{
 .btn-reply{
   padding: 0;
   font-size: 14px;
-  margin-left: 78px;
+  margin-left: 68px;
 }
 
 .list-comment-reply{

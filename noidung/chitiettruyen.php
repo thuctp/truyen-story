@@ -248,7 +248,7 @@
                     </span>
                     <div class="box-content">
                         <h6 class="nameUser"><?php echo $name['HoTen'] ?></h6>
-                        <p><?php echo $loopComment['NoiDung'] ?></p>
+                        <p class="content-cmt"><?php echo $loopComment['NoiDung'] ?></p>
                     </div>
                 </div>
                 <button type="button" class="btn btn-default btn-reply" data-toggle="button" aria-pressed="false" autocomplete="off">Reply</button>
@@ -294,7 +294,7 @@
                                 </span>
                                 <div class="box-content">
                                     <h6 class="nameUser"><?php echo $nameRep['HoTen'] ?></h6>
-                                    <p><?php echo $loopCommentRep['NoiDung'] ?></p>
+                                    <p class="content-cmt"><?php echo $loopCommentRep['NoiDung'] ?></p>
                                 </div>
                             </div>
                         </div>
