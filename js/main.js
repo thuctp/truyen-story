@@ -7,8 +7,6 @@ $(document).ready(function () {
     x=3;
     checkx=3;
     step=5;
-    console.log(size_li);
-    console.log(x);
     if(size_li < x){
         $(wrapShowHide).hide();
     };
