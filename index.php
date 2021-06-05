@@ -65,6 +65,9 @@ session_start();
 								include("noidung/suataikhoangnguoidung.php");
 								break;
 
+                                default:
+                                include('noidung/trangchu.php') ;
+
 							}
 						}
 		?>			

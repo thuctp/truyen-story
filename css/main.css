@@ -131,7 +131,7 @@ ul.c-ul-type-none {
       background-color: yellow; }
 
 .wrap-comment-rep-list {
-  padding-left: 66px; }
+  padding-left: 50px; }
 
 .comment-list-items {
   display: flex;
@@ -140,12 +140,14 @@ ul.c-ul-type-none {
     display: inline-block;
     margin-right: 12px; }
     .comment-list-items .box-avatar img {
-      width: 45px;
-      border-radius: 50%; }
+      border-radius: 50%;
+      width: 40px; }
   .comment-list-items .box-content {
     padding: 4px 12px;
-    background-color: #fff;
-    border-radius: 16px; }
+    border: 1px solid #f2f2f2;
+    background-color: #fafafa;
+    border-radius: 12px;
+    min-width: 200px; }
     .comment-list-items .box-content .nameUser {
       margin-bottom: 0;
       font-size: 14px; }
@@ -155,17 +157,32 @@ ul.c-ul-type-none {
 .btn-reply {
   padding: 0;
   font-size: 14px;
-  margin-left: 68px; }
+  line-height: 1.1;
+  margin-left: 64px;
+  margin-top: -3px; }
+
+.list-comment {
+  margin-bottom: 16px; }
 
 .list-comment-reply {
   margin-top: 16px; }
 
 .write-reply-comment {
-  padding-left: 66px;
+  padding-left: 50px;
   margin-top: 8px; }
 
 .wrap-comment-rep-list .comment-list-items {
   margin-bottom: 16px; }
+
+.comment-waiting-approve {
+  margin-bottom: 16px; }
+
+.op-7 {
+  opacity: .7; }
+
+.waiting-text {
+  font-weight: 400;
+  margin-left: 24px; }
 
 .form-binhluan {
   display: flex; }
@@ -177,10 +194,18 @@ ul.c-ul-type-none {
     color: white;
     margin-left: 8px; }
 
-.btn-reply ~ .write-reply-comment {
-  display: none; }
-.btn-reply.active ~ .write-reply-comment {
-  display: block; }
+.btn-reply {
+  box-shadow: none !important; }
+  .btn-reply ~ .write-reply-comment {
+    display: none; }
+  .btn-reply .cancel {
+    display: none; }
+  .btn-reply.active ~ .write-reply-comment {
+    display: block; }
+  .btn-reply.active .cancel {
+    display: inline-block; }
+  .btn-reply.active .rep {
+    display: none; }
 
 .box-noti-mess {
   border: 1px dashed red;
@@ -189,9 +214,16 @@ ul.c-ul-type-none {
 #id-show-hide-cmt .items-show-hide-cmt {
   display: none; }
 
-#showLess {
-  color: red;
+.box-show-hide {
+  display: flex;
+  flex-flow: column; }
+
+.loadMoreCmt, .showLessCmt {
+  font-weight: 600;
   cursor: pointer;
+  display: inline-block; }
+
+.showLessCmt {
   display: none; }
 
 /*# sourceMappingURL=main.css.map */

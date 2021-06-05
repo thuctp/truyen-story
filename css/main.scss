@@ -164,7 +164,7 @@ ul.c-ul-type-none{
 
 //comment
 .wrap-comment-rep-list{
-  padding-left: 66px;
+  padding-left: 50px;
 }
 
 .comment-list-items{
@@ -174,14 +174,18 @@ ul.c-ul-type-none{
     display: inline-block;
     margin-right: 12px;
     img{
-      width: 45px;
+      //width: 45px;
       border-radius: 50%;
+      width: 40px;
     }
   }
   .box-content{
     padding: 4px 12px;
-    background-color: #fff;
-    border-radius: 16px;
+    //border-radius: 16px;
+    border: 1px solid rgb(242, 242, 242);
+    background-color: rgb(250, 250, 250);
+    border-radius: 12px;
+    min-width: 200px;
     .nameUser{
       margin-bottom: 0;
       font-size: 14px;
@@ -195,7 +199,13 @@ ul.c-ul-type-none{
 .btn-reply{
   padding: 0;
   font-size: 14px;
-  margin-left: 68px;
+  line-height: 1.1;
+  margin-left: 64px;
+  margin-top: -3px;
+}
+
+.list-comment{
+  margin-bottom: 16px;
 }
 
 .list-comment-reply{
@@ -203,12 +213,23 @@ ul.c-ul-type-none{
 }
 
 .write-reply-comment{
-  padding-left: 66px;
+  padding-left: 50px;
   margin-top: 8px;
 }
 
 .wrap-comment-rep-list .comment-list-items{
   margin-bottom: 16px;
+}
+
+.comment-waiting-approve{
+  margin-bottom: 16px;
+}
+.op-7{
+  opacity: .7;
+}
+.waiting-text{
+  font-weight: 400;
+  margin-left: 24px;
 }
 
 .form-binhluan{
@@ -224,12 +245,22 @@ ul.c-ul-type-none{
 }
 
 .btn-reply{
+  box-shadow: none!important;
   ~ .write-reply-comment{
+    display: none;
+  }
+  .cancel{
     display: none;
   }
   &.active{
     ~ .write-reply-comment{
       display: block;
+    }
+    .cancel{
+      display: inline-block;
+    }
+    .rep{
+      display: none;
     }
   }
 }
@@ -243,8 +274,17 @@ ul.c-ul-type-none{
   display:none;
 }
 
-#showLess {
-  color:red;
+.box-show-hide{
+  display: flex;
+  flex-flow: column;
+}
+
+.loadMoreCmt, .showLessCmt{
+  font-weight: 600;
   cursor:pointer;
+  display: inline-block;
+}
+
+.showLessCmt {
   display:none;
 }

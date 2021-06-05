@@ -217,13 +217,46 @@
 <!-- kết thúc sản phẩm giá tuyowng đương -->
 
 <!--phần bình luận của đọc giả-->
-<div class="mb-5 p-2">
+<div class="mb-5 bg-white p-2">
     <h4 class="title-loai">Bình Luận Bài Viết:</h4>
 
 
 
     <div class="list-comment">
+        <!-- Binh Luaan chua duoc approve -->
+        <?php
+        if(isset($_SESSION['nguoidung'])){
+            $slComment="select * from nncms_comments where idTruyen = $idGetTruyen and TrangThai > 0 and idNguoiDung={$_SESSION['nguoidung']} ";
+            $kqListComment=mysqli_query($con, $slComment);
+            $checkDATAListComment=mysqli_num_rows($kqListComment);
+
+            if($checkDATAListComment > 0){
+                while ($loopComment=mysqli_fetch_array($kqListComment)) {
+                    $slGetUser="select idNguoiDung, HoTen, GioiTinh from nncms_nguoidung where idNguoiDung = {$loopComment['idNguoiDung']}";
+                    $kqGetUser=mysqli_query($con, $slGetUser);
+                    $name=mysqli_fetch_array($kqGetUser);
+                    ?>
+                    <div class="comment-list-items comment-waiting-approve op-7">
+                    <span class="box-avatar">
+                        <?php if($name['GioiTinh'] == 1){ ?>
+                            <img src="upload/sanpham/AvatarNu.png" alt="avatar">
+                        <?php } else{ ?>
+                            <img src="upload/sanpham/AvatarNam.png" alt="avatar">
+                        <?php } ?>
+                    </span>
+                        <div class="box-content">
+                            <h6 class="nameUser">
+                                <?php echo $name['HoTen'] ?>
+                                <span class="waiting-text">(Đang Chờ Duyệt)</span>
+                            </h6>
+                            <p class="content-cmt"><?php echo $loopComment['NoiDung'] ?></p>
+                        </div>
+                    </div>
+
+                <?php } } } ?>
+        <!--  -->
         <div id="id-show-hide-cmt">
+
             <?php
             $slComment="select * from nncms_comments where idTruyen = $idGetTruyen and TrangThai=0 order by idCmt DESC";
             $kqListComment=mysqli_query($con, $slComment);
@@ -251,7 +284,9 @@
                         <p class="content-cmt"><?php echo $loopComment['NoiDung'] ?></p>
                     </div>
                 </div>
-                <button type="button" class="btn btn-default btn-reply" data-toggle="button" aria-pressed="false" autocomplete="off">Reply</button>
+                <button type="button" class="btn btn-default btn-reply" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <span class="rep">Reply</span><span class="cancel">Cancel</span>
+                </button>
                 <div class="write-reply-comment">
                     <?php
                     if(isset($_SESSION['nguoidung'])){
@@ -272,6 +307,40 @@
                     <?php } ?>
                 </div>
                 <div class="list-comment-reply">
+                    <!-- list chua approve comments -->
+                    <?php
+                    if(isset($_SESSION['nguoidung'])){
+                    $slRepComment="select * from nncms_comments_rep where idCmt = {$loopComment['idCmt']} and TrangThai > 0 and idNguoiDung={$_SESSION['nguoidung']}";
+                    $kqListCommentRep=mysqli_query($con, $slRepComment);
+                    while ($loopCommentRep=mysqli_fetch_array($kqListCommentRep)) {
+                        ?>
+                        <div class="wrap-comment-rep-list">
+                            <?php
+                            $slGetUserRep="select idNguoiDung, HoTen, GioiTinh from nncms_nguoidung where idNguoiDung = {$loopCommentRep['idNguoiDung']}";
+                            $kqGetUserRep=mysqli_query($con, $slGetUserRep);
+                            $nameRep=mysqli_fetch_array($kqGetUserRep);
+                            ?>
+
+                            <div class="comment-list-items op-7">
+                                <span class="box-avatar">
+                                    <?php if($nameRep['GioiTinh'] == 1){ ?>
+                                        <img src="upload/sanpham/AvatarNu.png" width="40px" alt="avatar">
+                                    <?php } else{ ?>
+                                        <img src="upload/sanpham/AvatarNam.png" width="40px" alt="avatar">
+                                    <?php } ?>
+                                </span>
+                                <div class="box-content">
+                                    <h6 class="nameUser">
+                                        <?php echo $nameRep['HoTen'] ?>
+                                        <span class="waiting-text">(Đang Chờ Duyệt)</span>
+                                    </h6>
+                                    <p class="content-cmt"><?php echo $loopCommentRep['NoiDung'] ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } } ?>
+
+                    <!-- list comments -->
                     <?php
                     $slRepComment="select * from nncms_comments_rep where idCmt = {$loopComment['idCmt']} and TrangThai = 0";
                     $kqListCommentRep=mysqli_query($con, $slRepComment);
@@ -309,8 +378,11 @@
                 </div>
             <?php } ?>
         </div>
-        <div id="loadMore">Load more</div>
-        <div id="showLess">Show less</div>
+        <div id="box-show-hide" class="box-show-hide">
+            <div id="showLessCmt" class="showLessCmt">Show less comments</div>
+            <div id="loadMoreCmt" class="loadMoreCmt">View more comments</div>
+        </div>
+
     </div>
 
 

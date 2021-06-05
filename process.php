@@ -18,13 +18,9 @@ if(isset($_POST['dangnhap']))
 	}
 	else
 	{
-		
 		$d=mysqli_fetch_array($kq1);
-
 		$_SESSION['nguoidung']=$d['idNguoiDung'];
-
-
-		echo "<script>alert('Đăng Nhập Thành Công'); location.href='index.php'; </script>";
+		echo "<script>location.href='index.php';</script>";
 	}
 }
 

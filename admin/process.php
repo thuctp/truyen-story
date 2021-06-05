@@ -422,6 +422,21 @@ if(isset($_GET['duyetCmt']))
 
 }
 
+//duyệt tong quat comment
+if(isset($_GET['duyetTongCmt']))
+{
+    $sl= " update nncms_comments set TrangThai='0' where idCmt={$_GET['duyetTongCmt']}";
+    if(mysqli_query($con, $sl))
+    {
+        echo "<script>alert('Duyệt Thành Công');location.href='index.php?key=dscmttongquat';</script>";
+    }
+    else
+    {
+        echo "<script>alert('Duyệt Thất Bại');location.href='index.php?key=dscmttongquat';</script>";
+    }
+
+}
+
 //Duyệt comment reply
 if(isset($_GET['duyetCmtRepTongQuat']))
 {

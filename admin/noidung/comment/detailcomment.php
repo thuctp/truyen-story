@@ -2,7 +2,7 @@
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <?php
-    $kqcl= mysqli_query($con, " select * from nncms_comments order by idCmt");
+    $kqcl= mysqli_query($con, " select * from nncms_comments order by idCmt desc");
     while($dcl= mysqli_fetch_array($kqcl)) { ?>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading-<?php echo $dcl['idCmt'];?>">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="stt-0 stt-6">
                         <?php if($dcl['TrangThai'] == 1){ ?>
-                            <a href="process.php?duyetCmt=<?php echo $dcl['idCmt'];?>"><i class="fa fa-check fa-fw"></i> Duyệt</a>
+                            <a href="process.php?duyetTongCmt=<?php echo $dcl['idCmt'];?>"><i class="fa fa-check fa-fw"></i> Duyệt</a>
                         <?php } else{ ?>
 
                         <?php } ?>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="sttrep-0 sttrep-5">
                             <?php if($listrep['TrangThai'] == 1){ ?>
-                                <a href="process.php?duyetCmtRepTongQuat=<?php echo $listrep['idCmt'];?>"><i class="fa fa-check fa-fw"></i> Duyệt</a>
+                                <a href="process.php?duyetCmtRepTongQuat=<?php echo $listrep['idCmtRep'];?>"><i class="fa fa-check fa-fw"></i> Duyệt</a>
                             <?php } else{ ?>
 
                             <?php } ?>
