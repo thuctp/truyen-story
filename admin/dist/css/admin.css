@@ -1,0 +1,121 @@
+.box-flex-table {
+  display: flex;
+  margin-top: -1px; }
+  .box-flex-table.header {
+    font-weight: 600;
+    margin-top: 0; }
+  .box-flex-table .stt-0 {
+    border: 1px solid #ddd;
+    padding: 8px 4px;
+    min-width: 120px; }
+  .box-flex-table .stt-1 {
+    width: 18%; }
+  .box-flex-table .stt-2 {
+    width: 15%; }
+  .box-flex-table .stt-3 {
+    width: 18%; }
+  .box-flex-table .stt-4 {
+    width: 15%;
+    text-align: center; }
+  .box-flex-table .stt-5 {
+    width: 12%;
+    text-align: center; }
+  .box-flex-table .stt-6 {
+    width: 12%;
+    text-align: center; }
+  .box-flex-table .stt-7 {
+    width: 10%;
+    text-align: center; }
+
+.box-flex-table-replay {
+  display: flex;
+  margin-top: -1px; }
+  .box-flex-table-replay.header {
+    font-weight: 600;
+    margin-top: 0; }
+  .box-flex-table-replay .sttrep-0 {
+    border: 1px solid #ddd;
+    padding: 8px 4px;
+    min-width: 120px; }
+  .box-flex-table-replay .sttrep-1 {
+    width: 16%; }
+  .box-flex-table-replay .sttrep-2 {
+    width: 27%; }
+  .box-flex-table-replay .sttrep-3 {
+    width: 15%; }
+  .box-flex-table-replay .sttrep-4 {
+    width: 16%;
+    text-align: center; }
+  .box-flex-table-replay .sttrep-5 {
+    width: 14%;
+    text-align: center; }
+  .box-flex-table-replay .sttrep-6 {
+    width: 14%;
+    text-align: center; }
+
+.c-panel-title {
+  position: relative; }
+  .c-panel-title .icon-dropdown-table {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid #337ab7;
+    background-color: #fff;
+    color: #337ab7;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    text-decoration: none !important; }
+    .c-panel-title .icon-dropdown-table .icon-toggle-plus {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      position: relative; }
+      .c-panel-title .icon-dropdown-table .icon-toggle-plus:before, .c-panel-title .icon-dropdown-table .icon-toggle-plus:after {
+        position: absolute;
+        content: "";
+        width: 20px;
+        height: 2px;
+        background-color: #337ab7;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all .4s ease-in-out; }
+    .c-panel-title .icon-dropdown-table.collapsed .icon-toggle-plus:after {
+      transform: translate(-50%, -50%) rotate(90deg); }
+
+.warring-status {
+  background-color: red;
+  color: white; }
+
+.dashboard-admin .admin-items-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 24px; }
+  .dashboard-admin .admin-items-list a {
+    width: 100%;
+    height: 100%;
+    text-decoration: none !important; }
+  .dashboard-admin .admin-items-list .admin-box-items {
+    width: 150px;
+    height: 150px;
+    background-color: #f8f8f8;
+    border: solid 1px #ddd;
+    padding: 16px;
+    margin-right: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center; }
+    .dashboard-admin .admin-items-list .admin-box-items:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      cursor: pointer; }
+
+/*# sourceMappingURL=admin.css.map */
