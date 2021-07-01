@@ -12,19 +12,19 @@ $(document).ready(function () {
     };
     $('#id-show-hide-cmt .items-show-hide-cmt:lt('+x+')').show();
     $(idLoadMoreCmt).click(function () {
-        x= (x+5 <= size_li) ? x+5 : size_li;
+        x= (x+step <= size_li) ? x+step : size_li;
         $('#id-show-hide-cmt .items-show-hide-cmt:lt('+x+')').show();
         $(idShowLessCmt).show();
         if(x == size_li){
             $(idLoadMoreCmt).hide();
         }
     });
-    $('#showLessCmt').click(function () {
-        x=(x-5<=0) ? 3 : x-5;
+    $(idShowLessCmt).click(function () {
+        x=(x-step<=0) ? checkx : x-step;
         $('#id-show-hide-cmt .items-show-hide-cmt').not(':lt('+x+')').hide();
         $(idLoadMoreCmt).show();
         $(idShowLessCmt).show();
-        if(x <= 3){
+        if(x <= checkx){
             $(idShowLessCmt).hide();
         }
     });

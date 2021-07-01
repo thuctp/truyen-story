@@ -1,6 +1,6 @@
 <div class="bg-white p-4">
 		
-    <h2>Đăng Ký Thông Tin Khách Hàng</h2>
+    <h2>Đăng Ký Thông Tin Người Dùng</h2>
 
     <form method="post" action="process.php" id="form1" name="form1">
         <div class="form-group">

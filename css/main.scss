@@ -288,3 +288,33 @@ ul.c-ul-type-none{
 .showLessCmt {
   display:none;
 }
+
+.c-dropdown-menu{
+  position: relative;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  ul.c-dropdown-menu-box{
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    top: calc(100% - 3px);
+    left: 16px;
+    width: 260px;
+    z-index: 99;
+    padding: 8px 0;
+    li.c-dropdown-menu-items{
+      padding: 4px 16px;
+      border-bottom: solid 1px #eee;
+      a{display: block}
+      &:last-child{
+        border-bottom: 0;
+      }
+      &:hover{
+        background-color: #eee;
+      }
+    }
+  }
+  &:hover ul.c-dropdown-menu-box{
+    display: block;
+  }
+}

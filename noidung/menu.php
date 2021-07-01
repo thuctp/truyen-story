@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
+<!--        <a class="navbar-brand" href="#">Navbar</a>-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -9,12 +9,16 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                <li class="nav-item c-dropdown-menu">Thể Loại
+                    <ul class="c-dropdown-menu-box">
+                        <?php $listTheLoai=mysqli_query($con, "select idCL, TenCL, ThuTu, AnHien from nncms_chungloai where AnHien=1 order by ThuTu DESC limit 0,15");
+                        while ($looptheloai=mysqli_fetch_array($listTheLoai)){
+                            ?>
+                            <li class="c-dropdown-menu-items"><a class="text-dark" href="index.php?key=truyenCL&idcl=<?php echo $looptheloai['idCL'] ;?>"><i class="fas fa-tags fa-xs me-1"></i> <?php echo $looptheloai['TenCL'] ?> </a></li>
+                        <?php } ?>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
+
             </ul>
             <div class="d-flex">
                 <?php

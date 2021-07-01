@@ -100,7 +100,7 @@ if(!isset($_SESSION['username'])){
                             <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-tags fa-fw"></i> Chủng Loại<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-tags fa-fw"></i> Thể Loại<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="index.php?key=dschungloai">Danh Sách</a>
