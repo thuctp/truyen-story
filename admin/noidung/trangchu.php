@@ -6,26 +6,40 @@
                 <span>Danh Sách Thể Loại</span>
             </div>
         </a>
-        <div class="admin-box-items">
-            <a href="index.php?key=themchungloai">Thêm Thể Loại</a>
-        </div>
-        <div class="admin-box-items">
-            <a href="index.php?key=dstruyen">Danh Sách Truyện</a>
-        </div>
-        <div class="admin-box-items">
-            <a href="index.php?key=themtruyen">Thêm Truyện Mới</a>
-        </div>
-        <div class="admin-box-items">
-            <a href="index.php?key=themchuong">Thêm Chương Mới</a>
-        </div>
-        <div class="admin-box-items">
-            <a href="index.php?key=dscmttongquat">Xem Bình Luận</a>
-        </div>
-        <div class="admin-box-items">
-            <a href="index.php?key=dscomments">Danh Sách Mới Bình Luận</a>
-        </div>
-        <div class="admin-box-items">
-            <a href="#">Duyệt Bình Luận</a>
-        </div>
+        <a href="index.php?key=themchungloai">
+            <div class="admin-box-items">
+                <span>Thêm Thể Loại</span>
+            </div>
+        </a>
+        <a href="index.php?key=dstruyen">
+            <div class="admin-box-items">
+                <span>Danh Sách Truyện</span>
+            </div>
+        </a>
+        <a href="index.php?key=themtruyen">
+            <div class="admin-box-items">
+                <span>Thêm Truyện Mới</span>
+            </div>
+        </a>
+        <a href="index.php?key=themchuong">
+            <div class="admin-box-items">
+                <span>Thêm Chương Mới</span>
+            </div>
+        </a>
+        <a href="index.php?key=dscmttongquat">
+            <div class="admin-box-items">
+                <span>Xem Bình Luận</span>
+            </div>
+        </a>
+        <a href="index.php?key=dscomments">
+            <div class="admin-box-items">
+                <span>Danh Sách Mới Bình Luận</span>
+            </div>
+        </a>
+        <a href="#">
+            <div class="admin-box-items">
+                <span>Duyệt Bình Luận</span>
+            </div>
+        </a>
     </div>
 </div>
