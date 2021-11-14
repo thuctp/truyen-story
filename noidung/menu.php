@@ -6,17 +6,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <li class="nav-item me-3">
                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
-                <li class="nav-item c-dropdown-menu">Thể Loại
-                    <ul class="c-dropdown-menu-box">
-                        <?php $listTheLoai=mysqli_query($con, "select idCL, TenCL, ThuTu, AnHien from nncms_chungloai where AnHien=1 order by ThuTu DESC limit 0,15");
-                        while ($looptheloai=mysqli_fetch_array($listTheLoai)){
-                            ?>
-                            <li class="c-dropdown-menu-items"><a class="text-dark" href="index.php?key=truyenCL&idcl=<?php echo $looptheloai['idCL'] ;?>"><i class="fas fa-tags fa-xs me-1"></i> <?php echo $looptheloai['TenCL'] ?> </a></li>
-                        <?php } ?>
-                    </ul>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle color-op-1"
+                           href="#" role="button" id="dropdownMenuTheLoai" data-bs-toggle="dropdown" aria-expanded="false">
+                            Thể Loại
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuTheLoai">
+                            <?php $listTheLoai=mysqli_query($con, "select idCL, TenCL, ThuTu, AnHien from nncms_chungloai where AnHien=1 order by ThuTu DESC limit 0,15");
+                            while ($looptheloai=mysqli_fetch_array($listTheLoai)){
+                                ?>
+                                <li><a class="dropdown-item" href="index.php?key=truyenCL&idcl=<?php echo $looptheloai['idCL'] ;?>">
+                                        <i class="fas fa-tags fa-xs me-1"></i> <?php echo $looptheloai['TenCL'] ?>
+                                    </a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
                 </li>
 
             </ul>
@@ -27,17 +35,32 @@
                     $d=mysqli_fetch_array($kq);
                     ?>
                     <div class="">
-                        <a href="index.php?key=suauser&idNguoiDung=<?php echo $d['idNguoiDung'] ;?>"><button class="btn btn-danger btn-md"><?php echo $d['HoTen'] ?></button></a>
-                        <a href="process.php?huydn"><button class="btn btn-warning btn-md">Đăng Xuất</button></a>
+                        <div class="dropdown">
+                            <a class="btn btn-radius-sm-py btn-secondary dropdown-toggle"
+                               href="#" role="button" id="dropdownMenuProfile" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-2"></i>
+                                <?php echo $d['HoTen'] ?>
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuProfile">
+                                <li><a class="dropdown-item" href="index.php?key=suauser&idNguoiDung=<?php echo $d['idNguoiDung'] ;?>">
+                                        <i class="fas fa-user me-2"></i> Cá Nhân</a></li>
+                                <li><a class="dropdown-item" href="#">
+                                        <i class="fas fa-cog me-2"></i> Cài Đặt
+                                    </a></li>
+                                <li><a class="dropdown-item" href="process.php?huydn">
+                                        <i class="fas fa-sign-out-alt me-2"></i> Đăng Xuất</a></li>
+                            </ul>
+                        </div>
                     </div>
                 <?php }
                 else{
                     ?>
                     <!-- phan hien thi dang nhap -->
-                    <div class="">
-                        <button type="button" class="btn btn-sm text-white" data-bs-toggle="modal" data-bs-target="#dangnhap">Đăng Nhập</button>
+                    <div class=" btn-radius-sm-py bg-secondary group-btn-action">
+                        <button type="button" class="btn btn-sm text-white btn-radius-sm-py" data-bs-toggle="modal" data-bs-target="#dangnhap">Đăng Nhập</button>/
                         <a class="d-inline-block" href="index.php?key=dangkynguoidung">
-                            <button type="button" class="btn btn-sm text-white">Đăng Ký</button>
+                            <button type="button" class="btn btn-sm text-white btn-radius-sm-py">Đăng Ký</button>
                         </a>
                     </div>
 

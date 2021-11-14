@@ -37,7 +37,7 @@
             </label>
         </div>
 
-        <input type="submit" name="dangky" id="dangky" value="Đăng Ký">
-        <input type="reset" name="huy" value="Reset">
+        <input class="btn btn-primary" type="submit" name="dangky" id="dangky" value="Đăng Ký">
+        <input class="btn btn-outline-primary" type="reset" name="huy" value="Reset">
     </form>
 </div>

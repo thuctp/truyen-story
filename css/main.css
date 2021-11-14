@@ -251,4 +251,20 @@ ul.c-ul-type-none {
   .c-dropdown-menu:hover ul.c-dropdown-menu-box {
     display: block; }
 
+.btn-radius-sm-py {
+  border-radius: 25px;
+  padding-top: 2px;
+  padding-bottom: 2px; }
+
+.group-btn-action {
+  color: white; }
+  .group-btn-action button:hover {
+    background-color: #fd5d14 !important; }
+
+.color-op-1 {
+  color: white !important; }
+
+ul.navbar-nav a.nav-link:hover {
+  color: #fd5d14 !important; }
+
 /*# sourceMappingURL=main.css.map */

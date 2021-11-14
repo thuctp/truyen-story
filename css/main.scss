@@ -318,3 +318,26 @@ ul.c-ul-type-none{
     display: block;
   }
 }
+
+.btn-radius-sm-py{
+  border-radius: 25px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.group-btn-action{
+  color: white;
+  button:hover{
+    background-color: #fd5d14!important;
+  }
+}
+
+.color-op-1{
+  color: rgba(255, 255, 255, 1)!important;
+}
+
+ul.navbar-nav{
+  a.nav-link:hover{
+    color: #fd5d14!important;
+  }
+}
