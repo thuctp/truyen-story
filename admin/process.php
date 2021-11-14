@@ -85,6 +85,7 @@ if(isset($_GET['idCL']))
 	{
 		echo $s3;
 	}
+
 }
 
 
@@ -314,15 +315,22 @@ if(isset($_POST['suatruyen']))
 //xu ly phan xoa truyen
 if(isset($_GET['truyenxoa']))
 {
-    $s = "delete nncms_truyen, nncms_chuong from nncms_truyen, nncms_chuong where nncms_truyen.idTruyen = nncms_chuong.idTruyen and nncms_truyen.idTruyen = {$_GET['truyenxoa']}";
-//    $s="delete from nncms_truyen where idTruyen={$_GET['truyenxoa']}";
-    if(mysqli_query($con, $s))
+    $sxoaTruyen1 = "delete nncms_truyen, nncms_chuong from nncms_truyen, nncms_chuong where nncms_truyen.idTruyen = nncms_chuong.idTruyen and nncms_truyen.idTruyen = {$_GET['truyenxoa']}";
+    if(mysqli_query($con, $sxoaTruyen1))
     {
-        header("location:index.php?key=dstruyen");
+        $sxoaTruyen2="delete from nncms_truyen where idTruyen={$_GET['truyenxoa']}";
+        if(mysqli_query($con, $sxoaTruyen2))
+        {
+            echo "<script>alert('Xoa truyen Thành Công!');location.href='index.php?key=dstruyen';</script>";
+        }
+        else
+        {
+            echo $sxoaTruyen2;
+        }
     }
     else
     {
-        echo $s;
+        echo $sxoaTruyen1;
     }
 }
 
@@ -466,7 +474,30 @@ if(isset($_GET['duyetCmtRep']))
     }
 
 }
+
+//xu ly phan xoa Comment Chinh
+if(isset($_GET['xoaCmt']))
+{
+    $xoaCmt1 = "delete nncms_comments, nncms_comments_rep from nncms_comments, nncms_comments_rep where nncms_comments.idCmt = nncms_comments_rep.idCmt and nncms_comments.idCmt = {$_GET['xoaCmt']}";
+    if(mysqli_query($con, $xoaCmt1))
+    {
+        $xoaCmt2="delete from nncms_comments where idCmt={$_GET['xoaCmt']}";
+
+        if(mysqli_query($con, $xoaCmt2))
+        {
+            $xoaCmt2="delete from nncms_comments where idCmt={$_GET['xoaCmt']}";
+            echo "<script>alert('Xoa Thành Công');location.href='index.php?key=dscomments';</script>";
+        }
+        else
+        {
+            echo $xoaCmt1;
+        }
+
+    }
+    else
+    {
+        echo $xoaCmt1;
+    }
+}
 ?>
-
-
-
+<!--$xoaCmt2="delete from nncms_comments where idCmt={$_GET['xoaCmt']}";-->

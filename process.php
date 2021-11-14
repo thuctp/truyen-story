@@ -48,7 +48,7 @@ if(isset($_POST['dangky']))
     $sEmail = "Select Email from nncms_nguoidung where Email = '$email'";
     $kqEmail = mysqli_query($con, $sEmail);
     if(mysqli_num_rows($kqEmail) == 0){
-        $s=" insert into nncms_nguoidung (MatKhau, Email, HoTen, DienThoai, DiaChi, NgaySinh, GioiTinh, NgayDangKy, idNhom, KichHoat, MaNgauNhien, DiemSMS ) values ('$pass', '$email', '$ten', '$sdt','$diachi', '$ngaysinh', '$gioitinh', '$ngaydangky', 0, 1, '$mangaunhien', 0)";
+        $s=" insert into nncms_nguoidung (MatKhau, Email, HoTen, DienThoai, DiaChi, NgaySinh, GioiTinh, NgayDangKy, idNhom, KichHoat, MaNgauNhien, DiemSMS ) values ('$pass', '$email', '$ten', '$sdt','$diachi', '$ngaysinh', '$gioitinh', '$ngaydangky', 0, 0, '$mangaunhien', 0)";
         if(mysqli_query($con, $s))
         {
             echo "<script>alert('Dang Ky thanh cong'); location.href='index.php'; </script>";
