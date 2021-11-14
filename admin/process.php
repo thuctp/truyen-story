@@ -72,18 +72,22 @@ if(isset($_POST['suacl']))
 //xóa dữ liệu the loai 
 if(isset($_GET['idCL'])) 
 {
-	$s = "delete from nncms_chuong where idTruyen in (select idTruyen from nncms_truyen where idCL={$_GET['idCL']}) ";
-	$s2 = " delete from nncms_truyen where idCL= {$_GET['idCL']}";
-	$s3 = " delete from nncms_chungloai where idCL = {$_GET['idCL']}";
-	mysqli_query($con, $s);
-	mysqli_query($con, $s2);
-	if(mysqli_query($con, $s3))
+    $xCLCmtRep = "delete from nncms_comments_rep where idCmt in (select idCmt from nncms_comments where idTruyen in (select idTruyen from nncms_truyen where idCL={$_GET['idCL']})) ";
+    $xCLCmt = "delete from nncms_comments where idTruyen in (select idTruyen from nncms_truyen where idCL={$_GET['idCL']}) ";
+	$xCLChuong = "delete from nncms_chuong where idTruyen in (select idTruyen from nncms_truyen where idCL={$_GET['idCL']}) ";
+	$xCLTruyen = " delete from nncms_truyen where idCL= {$_GET['idCL']}";
+	$xCL = " delete from nncms_chungloai where idCL = {$_GET['idCL']}";
+	mysqli_query($con, $xCLCmtRep);
+	mysqli_query($con, $xCLCmt);
+	mysqli_query($con, $xCLChuong);
+	mysqli_query($con, $xCLTruyen);
+	if(mysqli_query($con, $xCL))
 	{
 		header("location:index.php?key=dschungloai");
 	}
 	else
 	{
-		echo $s3;
+		echo $xCL;
 	}
 
 }
@@ -315,23 +319,22 @@ if(isset($_POST['suatruyen']))
 //xu ly phan xoa truyen
 if(isset($_GET['truyenxoa']))
 {
-    $sxoaTruyen1 = "delete nncms_truyen, nncms_chuong from nncms_truyen, nncms_chuong where nncms_truyen.idTruyen = nncms_chuong.idTruyen and nncms_truyen.idTruyen = {$_GET['truyenxoa']}";
-    if(mysqli_query($con, $sxoaTruyen1))
+    $xTrCmtRep = "delete from nncms_comments_rep where idCmt in (select idCmt from nncms_comments where idTruyen={$_GET['truyenxoa']}) ";
+    $xTrCmt = " delete from nncms_comments where idTruyen= {$_GET['truyenxoa']}";
+    $xTrChuong = " delete from nncms_chuong where idTruyen = {$_GET['truyenxoa']}";
+    $xTr = " delete from nncms_truyen where idTruyen = {$_GET['truyenxoa']}";
+    mysqli_query($con, $xTrCmtRep);
+    mysqli_query($con, $xTrCmt);
+    mysqli_query($con, $xTrChuong);
+    if(mysqli_query($con, $xTr))
     {
-        $sxoaTruyen2="delete from nncms_truyen where idTruyen={$_GET['truyenxoa']}";
-        if(mysqli_query($con, $sxoaTruyen2))
-        {
-            echo "<script>alert('Xoa truyen Thành Công!');location.href='index.php?key=dstruyen';</script>";
-        }
-        else
-        {
-            echo $sxoaTruyen2;
-        }
+        header("location:index.php?key=dstruyen");
     }
     else
     {
-        echo $sxoaTruyen1;
+        echo $xTr;
     }
+
 }
 
 /***********************************************
