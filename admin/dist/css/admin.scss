@@ -120,6 +120,15 @@
   color: white;
 }
 
+.sub-warring{
+  .panel-heading .icon-dropdown-table.collapsed{
+    background-color: yellow !important;
+  }
+}
+.bg-warring{
+  background-color: yellow !important;
+}
+
 .dashboard-admin{
   .admin-items-list{
     display: flex;

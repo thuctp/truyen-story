@@ -284,9 +284,17 @@
                         <p class="content-cmt"><?php echo $loopComment['NoiDung'] ?></p>
                     </div>
                 </div>
+
+                <?php
+                if(isset($_SESSION['nguoidung'])){
+                $kqkt=mysqli_query($con, "select idNguoiDung, HoTen from nncms_nguoidung where idNguoiDung={$_SESSION['nguoidung']}");
+                $getUser=mysqli_fetch_array($kqkt);
+                ?>
                 <button type="button" class="btn btn-default btn-reply" data-toggle="button" aria-pressed="false" autocomplete="off">
                     <span class="rep">Reply</span><span class="cancel">Cancel</span>
                 </button>
+                <?php } ?>
+
                 <div class="write-reply-comment">
                     <?php
                     if(isset($_SESSION['nguoidung'])){

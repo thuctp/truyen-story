@@ -58,8 +58,7 @@
                                 <th>Tên Chuong</th>
                                 <th>Noi Dung</th>
                                 <th>So Lan Xem</th>
-                                <th>Delete</th>
-                                <th>Edit</th>
+                                <th>Tùy Chọn</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,8 +75,11 @@
                                     </div>
                                 </td>
                                 <td><?php echo $d3['SoLanXem'];?></td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="process.php?chuongxoa=<?php echo $d3['idChuong'] ;?>"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="index.php?key=suachuong&chuongsua=<?php echo $d3['idChuong'] ;?>">Edit</a></td>
+                                <td class="center">
+                                    <a href="process.php?chuongxoa=<?php echo $d3['idChuong'] ;?>"> <i class="fa fa-trash-o  fa-fw"></i> Delete</a>
+                                    <hr/>
+                                    <a href="index.php?key=suachuong&chuongsua=<?php echo $d3['idChuong'] ;?>"><i class="fa fa-pencil fa-fw"></i> Edit</a>
+                                </td>
                             </tr>
                         <?php } ?>
                         </tbody>

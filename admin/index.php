@@ -165,7 +165,7 @@ if(!isset($_SESSION['username'])){
                                     <a href="index.php?key=dscmttongquat">Tất Cả Bình Luận</a>
                                 </li>
                                 <li>
-                                    <a href="index.php?key=dscomments">Danh Sách Mới Bình Luận</a>
+                                    <a href="index.php?key=dscomments">Danh Sách Bình Luận</a>
                                 </li>
 
                             </ul>

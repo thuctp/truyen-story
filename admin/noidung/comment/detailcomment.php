@@ -4,7 +4,12 @@
     <?php
     $kqcl= mysqli_query($con, " select * from nncms_comments order by idCmt desc");
     while($dcl= mysqli_fetch_array($kqcl)) { ?>
-    <div class="panel panel-default">
+
+    <?php $sttDuyet= mysqli_query($con, " select * from nncms_comments_rep where idCmt={$dcl['idCmt']} and TrangThai=1 ");
+        $checkDATA=mysqli_num_rows($sttDuyet);
+    ?>
+
+    <div class="panel panel-default <?php if($checkDATA > 0) echo 'sub-warring' ;?>">
         <div class="panel-heading" role="tab" id="heading-<?php echo $dcl['idCmt'];?>">
             <div class="panel-title c-panel-title">
                 <div class="box-flex-table header">

@@ -38,7 +38,7 @@
         </a>
         <a href="#">
             <div class="admin-box-items">
-                <span>Duyệt Bình Luận</span>
+                <span>Duyệt Bình Luận~</span>
             </div>
         </a>
     </div>
